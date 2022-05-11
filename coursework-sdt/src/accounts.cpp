@@ -26,6 +26,7 @@ AccountProperties getDefaultAccount() {
     temp.salted_hash_password = sha256(DEFAULT_PASSWORD + temp.salt);
     temp.isAdmin = true;
     temp.isHaveAccess = true;
+    temp.isApproved = true;
 
     return temp;
 }
@@ -49,8 +50,9 @@ void readAccounts(std::vector<AccountProperties>& accounts) {
             temp.salt = readStringFromIfstream(fin);
             temp.isAdmin = readBoolFromIfstream(fin);
             temp.isHaveAccess = readBoolFromIfstream(fin);
+            temp.isApproved = readBoolFromIfstream(fin);
 
-            accounts.push_back(temp);//хуй
+            accounts.push_back(temp);
         }
     }
     fin.close();
@@ -67,22 +69,15 @@ void writeAccounts(const std::vector<AccountProperties>& accounts) {
         writeStringInOfstream(fout, accounts[i].salt);
         writeBoolInOfstream(fout, accounts[i].isAdmin);
         writeBoolInOfstream(fout, accounts[i].isHaveAccess);
+        writeBoolInOfstream(fout, accounts[i].isApproved);
     }
-}
-
-void outputUserData(const AccountProperties& user) {
-    std::cout << user.login << std::endl;
-    std::cout << user.salted_hash_password << std::endl;
-    std::cout << user.salt << std::endl;
-    std::cout << user.isAdmin << std::endl;
-    std::cout << user.isHaveAccess << std::endl;
 }
 
 AccountProperties createNewUser(std::string login, std::string password) {
     AccountProperties new_user;
     new_user.login = login;
     new_user.salt = generateSalt(SALT_TEMPLATE);
-    new_user.salted_hash_password = sha256(DEFAULT_PASSWORD + new_user.salt);
+    new_user.salted_hash_password = sha256(password + new_user.salt);
     new_user.isAdmin = false;
     new_user.isHaveAccess = false;
 
@@ -94,8 +89,8 @@ void addAccount(const AccountProperties& user, std::vector<AccountProperties>& a
 }
 
 bool isAccountExist(const std::string& login, const std::vector<AccountProperties>& accounts) {
-    for (int i = 0; i < (int)accounts.size(); ++i) {
-        if (accounts[i].login == login) {
+    for (const auto &account : accounts) {
+        if (account.login == login) {
             return true;
         }
     }
@@ -103,12 +98,13 @@ bool isAccountExist(const std::string& login, const std::vector<AccountPropertie
 }
 
 void showListOfUsers(const std::vector<AccountProperties>& accounts) {
-    for (auto user : accounts) {
+    for (const auto &user : accounts) {
         std::cout << "login: [" << user.login << "]\n";
         std::cout << "salt: [" << user.salt << "]\n";
         std::cout << "salted_hash_password: [" << user.salted_hash_password << "]\n";
         std::cout << "admin: [" << (user.isAdmin ? "true" : "false") << "]\n";
-        std::cout << "access: [" << (user.isHaveAccess ? "true" : "false") << "]\n\n";
+        std::cout << "access: [" << (user.isHaveAccess ? "true" : "false") << "]\n";
+        std::cout << "approved: [" << (user.isApproved ? "true" : "false") << "]\n\n";
     }
     std::cout << std::endl;
 }

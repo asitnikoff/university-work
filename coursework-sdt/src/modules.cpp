@@ -28,18 +28,31 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
         else {
             std::cout << INCORRECT_LOGIN_OR_PASSWORD_MESSAGE << std::endl;
             std::cout << "Попробовать снова? (1 - да, 2 - нет)" << std::endl;
-            char c = _getch();
+            char c = (char)getch();
             if (c == '2') {
-                break;
+                return;
             }
         }
     }
 
-    if (/*account.isAdmin*/true) {
+    if (!account.isApproved) {
+        std::cout << NOT_APPROVED_MESSAGE << std::endl;
+        system("pause");
+        return;
+    }
+
+    if (!account.isHaveAccess) {
+        std::cout << BLOCK_MESSAGE << std::endl;
+        system("pause");
+        return;
+    }
+
+    if (account.isAdmin) {
         showAdminUserModule(account, accounts);
     }
     else {
-        showCommonUserModule(account);
+//        showCommonUserModule(account);
+        std::cout << "He" << std::endl;
     }
 }
 
@@ -47,8 +60,8 @@ void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>
     while (true) {
         std::cout << "1) " << USE_ADMIN_PANEL_MESSAGE << std::endl;
         std::cout << "2) " << USE_COMMON_USER_PANEL_MESSAGE << std::endl;
-        std::cout << "3) " << BACK_MESSAGE << std::endl;
-        char choice = _getch();
+        std::cout << "3) " << LOG_OUT_MESSAGE << std::endl;
+        char choice = (char)getch();
 
         switch (choice) {
             case '1':

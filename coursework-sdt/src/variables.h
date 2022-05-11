@@ -14,8 +14,8 @@
 //#define SALT_TEMPLATE "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 //#define LOGIN_TEMPLATE "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 //#define PASSWORD_TEMPLATE "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-#define BLOCK_MESSAGE "Вы были заблокированы или ваша учётная запись ещё не подтверждена администратором."
-#define LOG_OUT_MESSAGE "Выйти из системы."
+#define BLOCK_MESSAGE "Ваша учётная запись была заблокирована администратором."
+#define LOG_OUT_MESSAGE "Выйти из аккаунта."
 #define CLOSE_SYSTEM_MESSAGE "Завершить работу программы."
 #define USE_ADMIN_PANEL_MESSAGE "Панель управления учётными записями."
 #define USE_COMMON_USER_PANEL_MESSAGE "Панель управления данными."
@@ -42,6 +42,8 @@
 #define INPUT_USER_LOGIN_FOR_BLOCK "Введите логин пользователя для блокировки: "
 #define INPUT_USER_LOGIN_FOR_ADMIN_ROOT "Введите логин пользователя для выдачи прав администратора: "
 #define GIVE_ADMIN_ROOT "Выдать права администратора."
+#define WELCOME_MESSAGE "Добро пожаловать в систему расчёта выпускаемой продукции!"
+#define NOT_APPROVED_MESSAGE "Данный аккаунт ещё не подтверждён администратором."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

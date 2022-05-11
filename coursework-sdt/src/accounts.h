@@ -12,6 +12,7 @@ struct AccountProperties {
     std::string salt;
     bool isAdmin = false;
     bool isHaveAccess = false;
+    bool isApproved = false;
 };
 
 
