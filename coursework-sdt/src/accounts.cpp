@@ -79,7 +79,7 @@ AccountProperties createNewUser(std::string login, std::string password) {
     new_user.salt = generateSalt(SALT_TEMPLATE);
     new_user.salted_hash_password = sha256(password + new_user.salt);
     new_user.isAdmin = false;
-    new_user.isHaveAccess = false;
+    new_user.isHaveAccess = true;
 
     return new_user;
 }
@@ -189,16 +189,26 @@ void deleteUserData(std::vector<AccountProperties>& accounts) {
     accounts.erase(accounts.begin() + p);
 }
 
-void confirmAccounts(std::vector<AccountProperties>& accounts) {
-    std::vector<AccountProperties> blocked_accounts = getListOfBlockedAccounts(accounts);
-    showListOfUsers(blocked_accounts);
+void approveAccounts(std::vector<AccountProperties>& accounts) {
+    std::vector<AccountProperties> unapproved_accounts = getListOfUnapprovedAccounts(accounts);
+    showListOfUsers(unapproved_accounts);
 
-    std::cout << INPUT_USER_LOGIN_FOR_UNBLOCK;
+    std::cout << INPUT_USER_LOGIN_FOR_APPROVE;
     fflush(stdout);
 
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
-    accounts[p].isHaveAccess = true;
+    accounts[p].isApproved = true;
+}
+
+std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountProperties>& accounts) {
+    std::vector<AccountProperties> unapproved_accounts;
+    for (auto& account : accounts) {
+        if (!account.isApproved) {
+            unapproved_accounts.push_back(account);
+        }
+    }
+    return unapproved_accounts;
 }
 
 std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountProperties>& accounts) {

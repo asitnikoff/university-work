@@ -52,7 +52,6 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
     }
     else {
 //        showCommonUserModule(account);
-        std::cout << "He" << std::endl;
     }
 }
 
@@ -135,7 +134,7 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
                 deleteUserData(accounts);
                 break;
             case '5':
-                confirmAccounts(accounts);
+                approveAccounts(accounts);
                 break;
             case '6':
                 blockAccounts(accounts);

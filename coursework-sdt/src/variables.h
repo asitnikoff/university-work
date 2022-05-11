@@ -39,6 +39,7 @@
 #define ADMIN "Администратор."
 #define COMMON_USER "Обычный пользователь."
 #define INPUT_USER_LOGIN_FOR_UNBLOCK "Введите логин пользователя для разблокировки: "
+#define INPUT_USER_LOGIN_FOR_APPROVE "Введите логин пользователя для подтверждения: "
 #define INPUT_USER_LOGIN_FOR_BLOCK "Введите логин пользователя для блокировки: "
 #define INPUT_USER_LOGIN_FOR_ADMIN_ROOT "Введите логин пользователя для выдачи прав администратора: "
 #define GIVE_ADMIN_ROOT "Выдать права администратора."
