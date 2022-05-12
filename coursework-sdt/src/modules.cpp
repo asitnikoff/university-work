@@ -114,8 +114,9 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
         std::cout << "4) " << DELETE_USER << std::endl;
         std::cout << "5) " << CONFIRM_USERS_REGISTRATION << std::endl;
         std::cout << "6) " << BLOCK_USER << std::endl;
-        std::cout << "7) " << GIVE_ADMIN_ROOT << std::endl;
-        std::cout << "8) " << BACK_MESSAGE << std::endl;
+        std::cout << "7) " << UNBLOCK_USER << std::endl;
+        std::cout << "8) " << GIVE_ADMIN_ROOT << std::endl;
+        std::cout << "9) " << BACK_MESSAGE << std::endl;
 
         char choice = _getch();
 
@@ -140,9 +141,12 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
                 blockAccounts(accounts);
                 break;
             case '7':
-                giveAdminRootAccounts(accounts);
+                unblockAccounts(accounts);
                 break;
             case '8':
+                giveAdminRootAccounts(accounts);
+                break;
+            case '9':
             default:
                 return;
         }

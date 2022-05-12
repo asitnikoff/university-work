@@ -30,6 +30,7 @@
 #define DELETE_USER "Удалить пользователя."
 #define CONFIRM_USERS_REGISTRATION "Подтверждение учётной записи пользователя."
 #define BLOCK_USER "Заблокировать пользователя."
+#define UNBLOCK_USER "Разблокировать пользователя."
 #define INPUT_USER_LOGIN "Введите логин пользователя: "
 #define WHAT_CHANGE "Что менять?"
 #define LOGIN "Логин."

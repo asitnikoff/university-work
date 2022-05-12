@@ -211,6 +211,30 @@ std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountPr
     return unapproved_accounts;
 }
 
+void blockAccounts(std::vector<AccountProperties>& accounts) {
+    std::vector<AccountProperties> unblocked_accounts = getListOfUnblockedAccounts(accounts);
+    showListOfUsers(unblocked_accounts);
+
+    std::cout << INPUT_USER_LOGIN_FOR_BLOCK;
+    fflush(stdout);
+
+    int p = getAccountPositionByLogin(inputLogin(), accounts);
+
+    accounts[p].isHaveAccess = false;
+}
+
+void unblockAccounts(std::vector<AccountProperties>& accounts) {
+    std::vector<AccountProperties> blocked_accounts = getListOfBlockedAccounts(accounts);
+    showListOfUsers(blocked_accounts);
+
+    std::cout << INPUT_USER_LOGIN_FOR_UNBLOCK;
+    fflush(stdout);
+
+    int p = getAccountPositionByLogin(inputLogin(), accounts);
+
+    accounts[p].isHaveAccess = true;
+}
+
 std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountProperties>& accounts) {
     std::vector<AccountProperties> blocked_accounts;
     for (auto& account : accounts) {
@@ -221,22 +245,10 @@ std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountPrope
     return blocked_accounts;
 }
 
-void blockAccounts(std::vector<AccountProperties>& accounts) {
-    std::vector<AccountProperties> unblocked_accounts = getListOfUnblockedAccounts(accounts);
-    showListOfUsers(unblocked_accounts);
-
-    std::cout << INPUT_USER_LOGIN_FOR_UNBLOCK;
-    fflush(stdout);
-
-    int p = getAccountPositionByLogin(inputLogin(), accounts);
-
-    accounts[p].isHaveAccess = false;
-}
-
 std::vector<AccountProperties> getListOfUnblockedAccounts(std::vector<AccountProperties>& accounts) {
     std::vector<AccountProperties> unblocked_accounts;
     for (auto& account : accounts) {
-        if (!account.isHaveAccess) {
+        if (account.isHaveAccess) {
             unblocked_accounts.push_back(account);
         }
     }
@@ -249,7 +261,7 @@ void giveAdminRootAccounts(std::vector<AccountProperties>& accounts) {
 
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
-    accounts[p].isHaveAccess = false;
+    accounts[p].isAdmin = true;
 }
 
 AccountProperties getAccountByLogin(std::string login, const std::vector<AccountProperties>& accounts) {

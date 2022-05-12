@@ -34,6 +34,7 @@ void editUserRole(AccountProperties&);
 void deleteUserData(std::vector<AccountProperties>&);
 void approveAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountProperties>&);
+void unblockAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountProperties>&);
 void blockAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfUnblockedAccounts(std::vector<AccountProperties>&);
