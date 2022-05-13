@@ -18,19 +18,16 @@ void showMainMenu(std::vector<AccountProperties>& accounts) {
         std::cout << "2) " << REGISTER_MESSAGE << std::endl;
         std::cout << "3) " << CLOSE_SYSTEM_MESSAGE << std::endl;
 
-        char choice;
-        choice = (char) getch();
+        int choice = getch() - '0';
 
         switch (choice) {
-            case '1':
+            case 1:
                 logInSystem(accounts);
                 break;
-            case '2':
+            case 2:
                 registerUserPage(accounts);
-                std::cout << WAIT_FOR_APPROVE << std::endl;
-                system("pause");
                 break;
-            case '3':
+            case 3:
             default:
                 return;
         }
@@ -40,8 +37,4 @@ void showMainMenu(std::vector<AccountProperties>& accounts) {
 void clearInputBuffer() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-}
-
-void showWelcomeMessage(const std::string& login) {
-    std::cout << "Добро пожаловать, " << login << "!" << std::endl;
 }

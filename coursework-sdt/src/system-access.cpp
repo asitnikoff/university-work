@@ -16,7 +16,7 @@ std::string inputLogin() {
 std::string inputPassword() {
     std::string password;
     while (true) {
-        char c = (char)getch();
+        char c = _getch();
         if (c == '\r') {
             std::cout << std::endl;
             break;

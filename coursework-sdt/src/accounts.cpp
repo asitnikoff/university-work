@@ -122,16 +122,16 @@ void editUserData(std::vector<AccountProperties>& accounts) {
     std::cout << "2) " << PASSWORD << std::endl;
     std::cout << "3) " << ROLE << std::endl;
 
-    char choice = _getch();
+    int choice = getch() - '0';
 
     switch (choice) {
-        case '1':
+        case 1:
             editUserLogin(accounts[p]);
             break;
-        case '2':
+        case 2:
             editUserPassword(accounts[p]);
             break;
-        case '3':
+        case 3:
             editUserRole(accounts[p]);
             break;
     }
@@ -166,16 +166,9 @@ void editUserRole(AccountProperties& account) {
     std::cout << "1) " << ADMIN << std::endl;
     std::cout << "2) " << COMMON_USER << std::endl;
 
-    char choice = _getch();
+    int choice = getch() - '0';
 
-    switch (choice) {
-        case '1':
-            account.isAdmin = true;
-            break;
-        case '2':
-            account.isAdmin = false;
-            break;
-    }
+    account.isAdmin = (choice == 1);
 }
 
 void deleteUserData(std::vector<AccountProperties>& accounts) {

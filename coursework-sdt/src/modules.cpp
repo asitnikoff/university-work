@@ -14,7 +14,6 @@
 void logInSystem(std::vector<AccountProperties>& accounts) {
     AccountProperties account;
     while (true) {
-        system("cls");
         std::cout << LOGIN_INPUT_MESSAGE;
         fflush(stdout);
         std::string login = inputLogin();
@@ -47,9 +46,6 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
         return;
     }
 
-    std::cout << SUCCESS_LOG_IN << std::endl;
-    system("pause");
-
     if (account.isAdmin) {
         showAdminUserModule(account, accounts);
     }
@@ -60,21 +56,19 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
 
 void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>& accounts) {
     while (true) {
-        system("cls");
-        showWelcomeMessage(user.login);
         std::cout << "1) " << USE_ADMIN_PANEL_MESSAGE << std::endl;
         std::cout << "2) " << USE_COMMON_USER_PANEL_MESSAGE << std::endl;
         std::cout << "3) " << LOG_OUT_MESSAGE << std::endl;
-        char choice = (char)getch();
+        int choice = getch() - '0';
 
         switch (choice) {
-            case '1':
+            case 1:
                 useAccountManager(user, accounts);
                 break;
-            case '2':
+            case 2:
                 useProductManager();
                 break;
-            case '3':
+            case 3:
             default:
                 return;
         }
@@ -117,6 +111,7 @@ void registerUserPage(std::vector<AccountProperties>& accounts) {
 
 void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& accounts) {
     while (true) {
+        system("cls");
         std::cout << "1) " << SHOW_ALL_USERS << std::endl;
         std::cout << "2) " << ADD_NEW_USER << std::endl;
         std::cout << "3) " << EDIT_USER << std::endl;
@@ -124,38 +119,34 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
         std::cout << "5) " << CONFIRM_USERS_REGISTRATION << std::endl;
         std::cout << "6) " << BLOCK_USER << std::endl;
         std::cout << "7) " << UNBLOCK_USER << std::endl;
-        std::cout << "8) " << GIVE_ADMIN_ROOT << std::endl;
-        std::cout << "9) " << BACK_MESSAGE << std::endl;
+        std::cout << "8) " << BACK_MESSAGE << std::endl;
 
-        char choice = _getch();
+        int choice = getch() - '0';
 
         switch (choice) {
-            case '1':
+            case 1:
                 showListOfUsers(accounts);
                 break;
-            case '2':
+            case 2:
                 registerUserPage(accounts);
                 accounts.back().isHaveAccess = true;
                 break;
-            case '3':
+            case 3:
                 editUserData(accounts);
                 break;
-            case '4':
+            case 4:
                 deleteUserData(accounts);
                 break;
-            case '5':
+            case 5:
                 approveAccounts(accounts);
                 break;
-            case '6':
+            case 6:
                 blockAccounts(accounts);
                 break;
-            case '7':
+            case 7:
                 unblockAccounts(accounts);
                 break;
-            case '8':
-                giveAdminRootAccounts(accounts);
-                break;
-            case '9':
+            case 8:
             default:
                 return;
         }
@@ -168,16 +159,16 @@ void showCommonUserModule(AccountProperties& account) {
         std::cout << "2) " << CHANGE_PASSWORD << std::endl;
         std::cout << "3) " << LOG_OUT_MESSAGE << std::endl;
 
-        char choice = (char) getch();
+        int choice = getch() - '0';
 
         switch (choice) {
-            case '1':
+            case 1:
                 useProductManager();
                 break;
-            case '2':
+            case 2:
                 editUserPassword(account);
                 break;
-            case '3':
+            case 3:
             default:
                 return;
         }

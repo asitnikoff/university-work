@@ -26,34 +26,34 @@ void useProductManager() {
         std::cout << "8) " << DELETE_PRODUCT << std::endl;
         std::cout << "9) " << BACK_MESSAGE << std::endl;
 
-        char choice = (char)getch();
+        int choice = getch() - '0';
 
         switch (choice) {
-            case '1':
+            case 1:
                 sortProductsByDate(products);
                 break;
-            case '2':
+            case 2:
                 sortProductsByShopNumber(products);
                 break;
-            case '3':
+            case 3:
                 sortProductsByProductName(products);
                 break;
-            case '4':
+            case 4:
                 sortProductsByProductAmount(products);
                 break;
-            case '5':
+            case 5:
                 sortProductsByResponsibleName(products);
                 break;
-            case '6':
+            case 6:
                 showListOfReleasedProducts(products);
                 break;
-            case '7':
+            case 7:
                 addProduct(products);
                 break;
-            case '8':
+            case 8:
                 deleteProduct(products);
                 break;
-            case '9':
+            case 9:
             default:
                 return;
         }
