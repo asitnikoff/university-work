@@ -185,16 +185,42 @@ void deleteUserData(std::vector<AccountProperties>& accounts) {
 }
 
 void approveAccounts(std::vector<AccountProperties>& accounts) {
-    system("cls");
-    std::vector<AccountProperties> unapproved_accounts = getListOfUnapprovedAccounts(accounts);
-    showListOfUsers(unapproved_accounts);
+    while (true) {
+        system("cls");
+        std::vector<AccountProperties> unapproved_accounts = getListOfUnapprovedAccounts(accounts);
+        if (unapproved_accounts.empty()) {
+            std::cout << NO_UNAPPROVED_ACCOUNTS << std::endl;
+            system("pause");
+            return;
+        }
+        showListOfUsers(unapproved_accounts);
 
-    std::cout << INPUT_USER_LOGIN_FOR_APPROVE;
-    fflush(stdout);
+        std::cout << "1) " << APPROVE_ONE_ACCOUNT << std::endl;
+        std::cout << "2) " << UNAPPROVE_ONE_ACCOUNT << std::endl;
+        std::cout << "3) " << APPROVE_ALL_ACCOUNTS << std::endl;
+        std::cout << "4) " << UNAPPROVE_ALL_ACCOUNTS << std::endl;
+        std::cout << "5) " << BACK_MESSAGE << std::endl;
 
-    int p = getAccountPositionByLogin(inputLogin(), accounts);
+        int choice = getch();
 
-    accounts[p].isApproved = true;
+        switch (choice) {
+            case 1:
+                approveOneAccount(accounts);
+                break;
+            case 2:
+                unapproveOneAccount(accounts);
+                break;
+            case 3:
+                approveAllAccounts(accounts);
+                break;
+            case 4:
+                unapproveAllAccounts(accounts);
+                break;
+            case 5:
+            default:
+                return;
+        }
+    }
 }
 
 std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountProperties>& accounts) {
@@ -210,6 +236,11 @@ std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountPr
 void blockAccounts(std::vector<AccountProperties>& accounts) {
     system("cls");
     std::vector<AccountProperties> unblocked_accounts = getListOfUnblockedAccounts(accounts);
+    if (unblocked_accounts.empty()) {
+        std::cout << NO_UNBLOCKED_ACCOUNTS << std::endl;
+        system("pause");
+        return;
+    }
     showListOfUsers(unblocked_accounts);
 
     std::cout << INPUT_USER_LOGIN_FOR_BLOCK;
@@ -223,6 +254,11 @@ void blockAccounts(std::vector<AccountProperties>& accounts) {
 void unblockAccounts(std::vector<AccountProperties>& accounts) {
     system("cls");
     std::vector<AccountProperties> blocked_accounts = getListOfBlockedAccounts(accounts);
+    if (blocked_accounts.empty()) {
+        std::cout << NO_BLOCKED_ACCOUNTS << std::endl;
+        system("pause");
+        return;
+    }
     showListOfUsers(blocked_accounts);
 
     std::cout << INPUT_USER_LOGIN_FOR_UNBLOCK;
@@ -253,15 +289,6 @@ std::vector<AccountProperties> getListOfUnblockedAccounts(std::vector<AccountPro
     return unblocked_accounts;
 }
 
-void giveAdminRootAccounts(std::vector<AccountProperties>& accounts) {
-    std::cout << INPUT_USER_LOGIN_FOR_ADMIN_ROOT;
-    fflush(stdout);
-
-    int p = getAccountPositionByLogin(inputLogin(), accounts);
-
-    accounts[p].isAdmin = true;
-}
-
 AccountProperties getAccountByLogin(std::string login, const std::vector<AccountProperties>& accounts) {
     AccountProperties ret;
     for (auto& account : accounts) {
@@ -270,4 +297,40 @@ AccountProperties getAccountByLogin(std::string login, const std::vector<Account
         }
     }
     return ret;
+}
+
+void approveOneAccount(std::vector<AccountProperties> &all_accounts) {
+    std::cout << INPUT_USER_LOGIN_FOR_APPROVE;
+    fflush(stdout);
+
+    int p = getAccountPositionByLogin(inputLogin(), all_accounts);
+
+    all_accounts[p].isApproved = true;
+}
+
+void unapproveOneAccount(std::vector<AccountProperties> &all_accounts) {
+    std::cout << INPUT_USER_LOGIN_FOR_UNAPPROVE;
+    fflush(stdout);
+
+    int p = getAccountPositionByLogin(inputLogin(), all_accounts);
+
+    all_accounts.erase(all_accounts.begin() + p);
+}
+
+
+void approveAllAccounts(std::vector<AccountProperties> &accounts) {
+    for (auto &account : accounts) {
+        account.isApproved = true;
+    }
+}
+
+void unapproveAllAccounts(std::vector<AccountProperties> &accounts) {
+    int i = 0;
+    while (i < (int)accounts.size()) {
+        if (!accounts[i].isApproved) {
+            accounts.erase(accounts.begin() + i);
+        } else {
+            ++i;
+        }
+    }
 }

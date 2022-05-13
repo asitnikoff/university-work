@@ -17,8 +17,6 @@ int main() {
 
     showMainMenu(accounts);
 
-    showListOfUsers(accounts);
-
     writeAccounts(accounts);
 
     system("pause");

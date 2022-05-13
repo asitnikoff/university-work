@@ -8,7 +8,7 @@
 
 
 void sortAccountsByLoginIncrease(std::vector<AccountProperties>&);
-void sortProductsByDate(std::vector<ProductProperties>&); // TODO: realize
+void sortProductsByDate(std::vector<ProductProperties>&);
 void sortProductsByShopNumber(std::vector<ProductProperties>&);
 void sortProductsByProductName(std::vector<ProductProperties>&);
 void sortProductsByProductAmount(std::vector<ProductProperties>&);

@@ -43,9 +43,9 @@
 #define COMMON_USER "Обычный пользователь."
 #define INPUT_USER_LOGIN_FOR_UNBLOCK "Введите логин пользователя для разблокировки: "
 #define INPUT_USER_LOGIN_FOR_APPROVE "Введите логин пользователя для подтверждения: "
+#define INPUT_USER_LOGIN_FOR_UNAPPROVE "Введите логин пользователя для отклонения: "
 #define INPUT_USER_LOGIN_FOR_BLOCK "Введите логин пользователя для блокировки: "
 #define INPUT_USER_LOGIN_FOR_ADMIN_ROOT "Введите логин пользователя для выдачи прав администратора: "
-#define GIVE_ADMIN_ROOT "Выдать права администратора."
 #define WELCOME_MESSAGE "Добро пожаловать в систему расчёта выпускаемой продукции!"
 #define NOT_APPROVED_MESSAGE "Данный аккаунт ещё не подтверждён администратором."
 #define OPEN_DATA_MANAGER "Открыть систему учёта выпускаемой предприятием продукции."
@@ -69,6 +69,13 @@
 #define LOGIN_NOT_IN_REQUIREMENTS "Логин не удовлетворяет шаблону."
 #define LOGIN_NOT_UNIQUE "Такой логин уже существует. Придумайте другой."
 #define PASSWORD_NOT_IN_REQUIREMENTS "Пароль не удовлетворяет шаблону."
+#define NO_UNAPPROVED_ACCOUNTS "Все аккаунты подтверждены."
+#define NO_UNBLOCKED_ACCOUNTS "Все аккаунты заблокированы."
+#define NO_BLOCKED_ACCOUNTS "Нет заблокированных аккаунтов."
+#define APPROVE_ONE_ACCOUNT "Подтвердить регистрацию аккаунта."
+#define UNAPPROVE_ONE_ACCOUNT "Отклонить регистрацию аккаунта."
+#define APPROVE_ALL_ACCOUNTS "Подтвердить все аккаунты."
+#define UNAPPROVE_ALL_ACCOUNTS "Отклонить все заявки на регистрацию."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

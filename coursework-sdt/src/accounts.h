@@ -20,7 +20,6 @@ std::string generateSalt(std::string);
 AccountProperties getDefaultAccount();
 void readAccounts(std::vector<AccountProperties>&);
 void writeAccounts(const std::vector<AccountProperties>&);
-void outputUserData(const AccountProperties&);
 AccountProperties createNewUser(std::string, std::string);
 void addAccount(const AccountProperties&, std::vector<AccountProperties>&);
 bool isAccountExist(const std::string&, const std::vector<AccountProperties>&);
@@ -38,7 +37,10 @@ void unblockAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountProperties>&);
 void blockAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfUnblockedAccounts(std::vector<AccountProperties>&);
-void giveAdminRootAccounts(std::vector<AccountProperties>&);
+void approveOneAccount(std::vector<AccountProperties>&);
+void unapproveOneAccount(std::vector<AccountProperties>&);
+void approveAllAccounts(std::vector<AccountProperties>&);
+void unapproveAllAccounts(std::vector<AccountProperties>&);
 
 
 #endif
