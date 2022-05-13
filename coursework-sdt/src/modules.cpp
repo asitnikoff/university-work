@@ -8,6 +8,7 @@
 #include "system-access.h"
 #include "validation.h"
 #include "variables.h"
+#include "products.h"
 
 
 void logInSystem(std::vector<AccountProperties>& accounts) {
@@ -27,7 +28,7 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
         }
         else {
             std::cout << INCORRECT_LOGIN_OR_PASSWORD_MESSAGE << std::endl;
-            std::cout << "ÐŸÐ¾Ð¿Ñ€Ð¾Ð±Ð¾Ð²Ð°Ñ‚ÑŒ ÑÐ½Ð¾Ð²Ð°? (1 - Ð´Ð°, 2 - Ð½ÐµÑ‚)" << std::endl;
+            std::cout << "®¯à®¡®¢ âì á­®¢ ? (1 - ¤ , 2 - ­¥â)" << std::endl;
             char c = (char)getch();
             if (c == '2') {
                 return;
@@ -51,7 +52,7 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
         showAdminUserModule(account, accounts);
     }
     else {
-//        showCommonUserModule(account);
+        showCommonUserModule(account);
     }
 }
 
@@ -67,7 +68,7 @@ void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>
                 useAccountManager(user, accounts);
                 break;
             case '2':
-                //useDataManager(user);
+                useProductManager();
                 break;
             case '3':
             default:
@@ -94,7 +95,7 @@ void registerUserPage(std::vector<AccountProperties>& accounts) {
         }
         else {
             std::cout << INCORRECT_LOGIN_OR_PASSWORD_MESSAGE << std::endl;
-            std::cout << "ÐŸÐ¾Ð¿Ñ€Ð¾Ð±Ð¾Ð²Ð°Ñ‚ÑŒ ÑÐ½Ð¾Ð²Ð°? (1 - Ð´Ð°, 2 - Ð½ÐµÑ‚)" << std::endl;
+            std::cout << "®¯à®¡®¢ âì á­®¢ ? (1 - ¤ , 2 - ­¥â)" << std::endl;
             if (_getch() == '2') {
                 return;
             }
@@ -154,5 +155,23 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
 }
 
 void showCommonUserModule(AccountProperties& account) {
-    std::cout << "Checked function \"showCommonUserModule\"" << std::endl;
+    while (true) {
+        std::cout << "1) " << OPEN_DATA_MANAGER << std::endl;
+        std::cout << "2) " << CHANGE_PASSWORD << std::endl;
+        std::cout << "3) " << LOG_OUT_MESSAGE << std::endl;
+
+        char choice = (char) getch();
+
+        switch (choice) {
+            case '1':
+                useProductManager();
+                break;
+            case '2':
+                editUserPassword(account);
+                break;
+            case '3':
+            default:
+                return;
+        }
+    }
 }

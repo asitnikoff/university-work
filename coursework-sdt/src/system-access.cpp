@@ -23,8 +23,9 @@ std::string inputPassword() {
         }
         if (c == '\b') {
             if (!password.empty()) {
-                std::cout << "\x1B[1D"; // Move the cursor one unit to the left
-                std::cout << "\x1B[1P"; // Delete the character
+//                std::cout << "\x1B[1D"; // Move the cursor one unit to the left
+//                std::cout << "\x1B[1P"; // Delete the character
+                std::cout << "\b \b";
                 password.erase((int)password.size() - 1, 1);
             }
         }

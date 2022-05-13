@@ -7,7 +7,10 @@
 #include "system-access.h"
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
+//    SetConsoleCP(1251);
+//    SetConsoleCP(cp);
+//    SetConsoleOutputCP(1251);
+//    SetConsoleOutputCP(CP866);
 
     std::vector<AccountProperties> accounts;
     readAccounts(accounts);

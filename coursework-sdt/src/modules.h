@@ -13,6 +13,5 @@ void registerUserPage(std::vector<AccountProperties>&);
 void showAdminUserModule(AccountProperties&, std::vector<AccountProperties>&);
 void showCommonUserModule(AccountProperties&);
 void useAccountManager(AccountProperties&, std::vector<AccountProperties>&);
-void useDataManager(AccountProperties&);
 
 #endif

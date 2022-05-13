@@ -13,10 +13,13 @@ set(PROJECT_SOURCES
         src/sha256.cpp
         src/sorts.cpp
         src/system-access.cpp
-        src/validation.cpp)
+        src/validation.cpp
+        src/products.cpp
+        src/date-utilities.cpp)
 
 
 set(PROJECT_HEADERS
+        src/date-utilities.h
         src/accounts.h
         src/fstream-utilities.h
         src/modules.h
@@ -25,7 +28,8 @@ set(PROJECT_HEADERS
         src/sorts.h
         src/system-access.h
         src/validation.h
-        src/variables.h)
+        src/variables.h
+        src/products.h)
 
 
 add_executable(coursework_sdt ${PROJECT_SOURCES} ${PROJECT_HEADERS})
