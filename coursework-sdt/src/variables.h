@@ -65,6 +65,10 @@
 #define INPUT_PRODUCT_AMOUTN "Введите количество продуктов: "
 #define INPUT_RESPONSIBLE_NAME "Введите имя ответственного: "
 #define INPUT_PRODUCT_NUMBER "Введите номер продукта: "
+#define TRY_AGAIN "Попробовать снова? (1 - да, 2 - нет)"
+#define LOGIN_NOT_IN_REQUIREMENTS "Логин не удовлетворяет шаблону."
+#define LOGIN_NOT_UNIQUE "Такой логин уже существует. Придумайте другой."
+#define PASSWORD_NOT_IN_REQUIREMENTS "Пароль не удовлетворяет шаблону."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

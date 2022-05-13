@@ -80,9 +80,11 @@ void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>
 void registerUserPage(std::vector<AccountProperties>& accounts) {
     std::string login, password;
 
-    std::cout << REQUIREMENTS_FOR_LOGIN << std::endl;
-    std::cout << REQUIREMENTS_FOR_PASSWORD << std::endl;
     while (true) {
+        system("cls");
+
+        std::cout << REQUIREMENTS_FOR_LOGIN << std::endl;
+        std::cout << REQUIREMENTS_FOR_PASSWORD << std::endl << std::endl;
         std::cout << LOGIN_INPUT_MESSAGE;
         fflush(stdout);
         login = inputLogin();
@@ -90,15 +92,17 @@ void registerUserPage(std::vector<AccountProperties>& accounts) {
         std::cout << PASSWORD_INPUT_MESSAGE;
         fflush(stdout);
         password = inputPassword();
-        if (isValidLogin(login) && isUniqueLogin(login, accounts) && isValidPassword(password)) {
+        if (!isValidLogin(login)) {
+            std::cout << LOGIN_NOT_IN_REQUIREMENTS << std::endl;
+        } else if (!isUniqueLogin(login, accounts)) {
+            std::cout << LOGIN_NOT_UNIQUE << std::endl;
+        } else if (!isValidPassword(password)) {
+            std::cout << PASSWORD_NOT_IN_REQUIREMENTS << std::endl;
+        } else {
             break;
         }
-        else {
-            std::cout << INCORRECT_LOGIN_OR_PASSWORD_MESSAGE << std::endl;
-            std::cout << "Попробовать снова? (1 - да, 2 - нет)" << std::endl;
-            if (_getch() == '2') {
-                return;
-            }
+        if (!isTryAgain()) {
+            return;
         }
     }
 

@@ -1,3 +1,6 @@
+#include <iostream>
+#include <conio.h>
+
 #include "validation.h"
 #include "accounts.h"
 #include "sha256.h"
@@ -38,4 +41,9 @@ bool isValidPassword(const std::string& password) {
         }
     }
     return true;
+}
+
+bool isTryAgain() {
+    std::cout << TRY_AGAIN << std::endl;
+    return ((char)getch() == '1');
 }

@@ -11,5 +11,6 @@ bool isCorrectAccount(const std::string&, const std::string&, const std::vector<
 bool isValidLogin(const std::string&);
 bool isUniqueLogin(const std::string&, const std::vector<AccountProperties>&);
 bool isValidPassword(const std::string&);
+bool isTryAgain();
 
 #endif

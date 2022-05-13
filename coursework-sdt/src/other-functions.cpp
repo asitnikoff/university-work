@@ -11,6 +11,7 @@
 
 void showMainMenu(std::vector<AccountProperties>& accounts) {
     while (true) {
+        system("cls");
         std::cout << WELCOME_MESSAGE << std::endl << std::endl;
 
         std::cout << "1) " << LOGIN_SYSTEM_MESSAGE << std::endl;
