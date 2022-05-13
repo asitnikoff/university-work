@@ -21,8 +21,8 @@
 #define USE_ADMIN_PANEL_MESSAGE "Панель управления учётными записями."
 #define USE_COMMON_USER_PANEL_MESSAGE "Панель управления данными."
 #define BACK_MESSAGE "Назад."
-#define SUCCESSFUL_ACCOUNT_REGISTRATION_MESSAGE "Аккаунт был успешно зарегистрирован. " \
-                                                "Ожидайте подтверждения от администратора."
+#define SUCCESSFUL_ACCOUNT_REGISTRATION_MESSAGE "Аккаунт был успешно зарегистрирован. "
+#define WAIT_FOR_APPROVE "Ожидайте подтверждения от администратора."
 #define REQUIREMENTS_FOR_LOGIN "Логин должен состоять из маленьких и больших латинских символов и цифр."
 #define REQUIREMENTS_FOR_PASSWORD "Пароль состоять из маленьких и больших латинских символов и цифр."
 #define INCORRECT_LOGIN_OR_PASSWORD_MESSAGE "Неверный логин или пароль."
@@ -69,6 +69,7 @@
 #define LOGIN_NOT_IN_REQUIREMENTS "Логин не удовлетворяет шаблону."
 #define LOGIN_NOT_UNIQUE "Такой логин уже существует. Придумайте другой."
 #define PASSWORD_NOT_IN_REQUIREMENTS "Пароль не удовлетворяет шаблону."
+#define SUCCESS_LOG_IN "Вход выолнен успешно!"
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

@@ -27,6 +27,8 @@ void showMainMenu(std::vector<AccountProperties>& accounts) {
                 break;
             case '2':
                 registerUserPage(accounts);
+                std::cout << WAIT_FOR_APPROVE << std::endl;
+                system("pause");
                 break;
             case '3':
             default:
@@ -38,4 +40,8 @@ void showMainMenu(std::vector<AccountProperties>& accounts) {
 void clearInputBuffer() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+void showWelcomeMessage(const std::string& login) {
+    std::cout << "Добро пожаловать, " << login << "!" << std::endl;
 }
