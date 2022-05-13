@@ -14,6 +14,7 @@
 void logInSystem(std::vector<AccountProperties>& accounts) {
     AccountProperties account;
     while (true) {
+        system("cls");
         std::cout << LOGIN_INPUT_MESSAGE;
         fflush(stdout);
         std::string login = inputLogin();
@@ -56,6 +57,8 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
 
 void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>& accounts) {
     while (true) {
+        system("cls");
+        showAccountWelcomeMessage(user.login);
         std::cout << "1) " << USE_ADMIN_PANEL_MESSAGE << std::endl;
         std::cout << "2) " << USE_COMMON_USER_PANEL_MESSAGE << std::endl;
         std::cout << "3) " << LOG_OUT_MESSAGE << std::endl;

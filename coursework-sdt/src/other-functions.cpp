@@ -38,3 +38,7 @@ void clearInputBuffer() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
+
+void showAccountWelcomeMessage(const std::string &login) {
+    std::cout << "Добро пожаловать, " << login << "!" << std::endl;
+}

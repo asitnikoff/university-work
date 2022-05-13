@@ -9,6 +9,7 @@
 
 void showMainMenu(std::vector<AccountProperties>&);
 void clearInputBuffer();
+void showAccountWelcomeMessage(const std::string&);
 
 
 #endif
