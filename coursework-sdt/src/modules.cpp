@@ -115,41 +115,39 @@ void registerUserPage(std::vector<AccountProperties>& accounts) {
 void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& accounts) {
     while (true) {
         system("cls");
-        std::cout << "1) " << SHOW_ALL_USERS << std::endl;
-        std::cout << "2) " << ADD_NEW_USER << std::endl;
-        std::cout << "3) " << EDIT_USER << std::endl;
-        std::cout << "4) " << DELETE_USER << std::endl;
-        std::cout << "5) " << CONFIRM_USERS_REGISTRATION << std::endl;
-        std::cout << "6) " << BLOCK_USER << std::endl;
-        std::cout << "7) " << UNBLOCK_USER << std::endl;
-        std::cout << "8) " << BACK_MESSAGE << std::endl;
+        showListOfUsers(accounts);
+
+        std::cout << "1) " << ADD_NEW_USER << std::endl;
+        std::cout << "2) " << EDIT_USER << std::endl;
+        std::cout << "3) " << DELETE_USER << std::endl;
+        std::cout << "4) " << APPROVE_USERS_REGISTRATION << std::endl;
+        std::cout << "5) " << BLOCK_USER << std::endl;
+        std::cout << "6) " << UNBLOCK_USER << std::endl;
+        std::cout << "7) " << BACK_MESSAGE << std::endl;
 
         int choice = getch() - '0';
 
         switch (choice) {
             case 1:
-                showListOfUsers(accounts);
+                registerUserPage(accounts);
+                accounts.back().isHaveAccess = accounts.back().isApproved = true;
                 break;
             case 2:
-                registerUserPage(accounts);
-                accounts.back().isHaveAccess = true;
-                break;
-            case 3:
                 editUserData(accounts);
                 break;
-            case 4:
+            case 3:
                 deleteUserData(accounts);
                 break;
-            case 5:
+            case 4:
                 approveAccounts(accounts);
                 break;
-            case 6:
+            case 5:
                 blockAccounts(accounts);
                 break;
-            case 7:
+            case 6:
                 unblockAccounts(accounts);
                 break;
-            case 8:
+            case 7:
             default:
                 return;
         }

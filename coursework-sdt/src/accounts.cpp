@@ -110,6 +110,7 @@ void showListOfUsers(const std::vector<AccountProperties>& accounts) {
 }
 
 void editUserData(std::vector<AccountProperties>& accounts) {
+    system("cls");
     showListOfUsers(accounts);
 
     std::cout << INPUT_USER_LOGIN;
@@ -172,6 +173,7 @@ void editUserRole(AccountProperties& account) {
 }
 
 void deleteUserData(std::vector<AccountProperties>& accounts) {
+    system("cls");
     showListOfUsers(accounts);
 
     std::cout << INPUT_USER_LOGIN;
@@ -183,6 +185,7 @@ void deleteUserData(std::vector<AccountProperties>& accounts) {
 }
 
 void approveAccounts(std::vector<AccountProperties>& accounts) {
+    system("cls");
     std::vector<AccountProperties> unapproved_accounts = getListOfUnapprovedAccounts(accounts);
     showListOfUsers(unapproved_accounts);
 
@@ -205,6 +208,7 @@ std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountPr
 }
 
 void blockAccounts(std::vector<AccountProperties>& accounts) {
+    system("cls");
     std::vector<AccountProperties> unblocked_accounts = getListOfUnblockedAccounts(accounts);
     showListOfUsers(unblocked_accounts);
 
@@ -217,6 +221,7 @@ void blockAccounts(std::vector<AccountProperties>& accounts) {
 }
 
 void unblockAccounts(std::vector<AccountProperties>& accounts) {
+    system("cls");
     std::vector<AccountProperties> blocked_accounts = getListOfBlockedAccounts(accounts);
     showListOfUsers(blocked_accounts);
 
