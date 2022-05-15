@@ -130,7 +130,7 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
         switch (choice) {
             case 1:
                 registerUserPage(accounts);
-                accounts.back().isHaveAccess = accounts.back().isApproved = true;
+                accounts.back().isApproved = true;
                 break;
             case 2:
                 editUserData(accounts);
