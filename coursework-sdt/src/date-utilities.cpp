@@ -14,10 +14,10 @@ DateProperties parseDate(std::string date_str) {
 
 bool isLessOrEqual(const DateProperties &left_date, const DateProperties &right_date) {
     if (left_date.year != right_date.year) {
-        return left_date.year < right_date.year;
+        return left_date.year <= right_date.year;
     }
     if (left_date.month != right_date.month) {
-        return left_date.month != right_date.month;
+        return left_date.month <= right_date.month;
     }
-    return left_date.day < right_date.day;
+    return left_date.day <= right_date.day;
 }
