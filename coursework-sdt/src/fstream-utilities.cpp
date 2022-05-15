@@ -34,17 +34,19 @@ void writeBoolInOfstream(std::ofstream& fout, const bool& flag) {
 
 DateProperties readDateFromIfstream(std::ifstream& fin) {
     DateProperties ret;
-    fin.read((char*)&ret.day, sizeof(int));
-    fin.read((char*)&ret.month, sizeof(int));
-    fin.read((char*)&ret.year, sizeof(int));
+    fin.read((char*)&ret, sizeof(DateProperties));
+//    fin.read((char*)&ret.day, sizeof(int));
+//    fin.read((char*)&ret.month, sizeof(int));
+//    fin.read((char*)&ret.year, sizeof(int));
 
     return ret;
 }
 
 void writeDateInOfstream(std::ofstream& fout, const DateProperties& date) {
-    fout.write((char*)&date.day, sizeof(int));
-    fout.write((char*)&date.month, sizeof(int));
-    fout.write((char*)&date.year, sizeof(int));
+    fout.write((char*)&date, sizeof(DateProperties));
+//    fout.write((char*)&date.day, sizeof(int));
+//    fout.write((char*)&date.month, sizeof(int));
+//    fout.write((char*)&date.year, sizeof(int));
 }
 
 int readIntFromIfstream(std::ifstream& fin) {

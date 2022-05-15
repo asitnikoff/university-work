@@ -54,12 +54,11 @@ void useProductManager() {
                 deleteProduct(products);
                 break;
             case 9:
+                writeProducts(products);
             default:
                 return;
         }
     }
-
-    writeProducts(products);
 }
 
 void showListOfProducts(const std::vector<ProductProperties>& products) {
@@ -95,7 +94,7 @@ void readProducts(std::vector<ProductProperties>& products) {
 
 void writeProducts(const std::vector<ProductProperties>& products) {
     std::ofstream fout;
-    fout.open(ACCOUNTS_FILENAME, std::ios::out | std::ios::binary);
+    fout.open(PRODUCTS_FILENAME, std::ios::out | std::ios::binary);
 
     int n = (int)products.size();
     for (int i = 0; i < n; ++i) {
@@ -105,6 +104,7 @@ void writeProducts(const std::vector<ProductProperties>& products) {
         writeIntInOfstream(fout, products[i].product_amount);
         writeStringInOfstream(fout, products[i].responsible_name);
     }
+    fout.close();
 }
 
 void showListOfReleasedProducts(const std::vector<ProductProperties>& products) {
