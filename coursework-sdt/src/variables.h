@@ -76,6 +76,16 @@
 #define UNAPPROVE_ONE_ACCOUNT "Отклонить регистрацию аккаунта."
 #define APPROVE_ALL_ACCOUNTS "Подтвердить все аккаунты."
 #define UNAPPROVE_ALL_ACCOUNTS "Отклонить все заявки на регистрацию."
+#define SUCCESSFUL_LOGIN_CHANGE "Логин был успешно изменён."
+#define SUCCESSFUL_PASSWORD_CHANGE "Пароль был успешно изменён."
+#define SUCCESSFUL_ROLE_CHANGE "Роль пользователя была успешно изменена."
+#define SUCCESSFUL_ACCOUNT_DELETE "Пользователь был успешно удалён."
+#define SUCCESSFUL_ACCOUNT_BLOCK "Пользователь был успешно заблокирован."
+#define SUCCESSFUL_ACCOUNT_UNBLOCK "Пользователь был успешно удалён."
+#define SUCCESSFUL_ACCOUNT_UNAPPROVE "Аккаунт пользователя не подтверждён."
+#define SUCCESSFUL_ACCOUNT_APPROVE "Аккаунт пользователя подтвёрждён."
+#define SUCCESSFUL_ALL_ACCOUNTS_APPROVE "Все аккаунты подтверждены."
+#define SUCCESSFUL_ALL_ACCOUNTS_UNAPPROVE "Все аккаунты не подтверждены."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

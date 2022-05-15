@@ -71,6 +71,7 @@ void writeAccounts(const std::vector<AccountProperties>& accounts) {
         writeBoolInOfstream(fout, accounts[i].isHaveAccess);
         writeBoolInOfstream(fout, accounts[i].isApproved);
     }
+    fout.close();
 }
 
 AccountProperties createNewUser(std::string login, std::string password) {
@@ -80,6 +81,7 @@ AccountProperties createNewUser(std::string login, std::string password) {
     new_user.salted_hash_password = sha256(password + new_user.salt);
     new_user.isAdmin = false;
     new_user.isHaveAccess = true;
+    new_user.isApproved = false;
 
     return new_user;
 }
@@ -152,6 +154,9 @@ void editUserLogin(AccountProperties& account) {
     fflush(stdout);
     std::string login = inputLogin();
     account.login = login;
+
+    std::cout << SUCCESSFUL_LOGIN_CHANGE << std::endl;
+    system("pause");
 }
 
 void editUserPassword(AccountProperties& account) {
@@ -160,6 +165,9 @@ void editUserPassword(AccountProperties& account) {
     std::string password = inputPassword();
     account.salt = generateSalt(SALT_TEMPLATE);
     account.salted_hash_password= sha256(password + account.salt);
+
+    std::cout << SUCCESSFUL_PASSWORD_CHANGE << std::endl;
+    system("pause");
 }
 
 void editUserRole(AccountProperties& account) {
@@ -170,6 +178,9 @@ void editUserRole(AccountProperties& account) {
     int choice = getch() - '0';
 
     account.isAdmin = (choice == 1);
+
+    std::cout << SUCCESSFUL_ROLE_CHANGE << std::endl;
+    system("pause");
 }
 
 void deleteUserData(std::vector<AccountProperties>& accounts) {
@@ -182,6 +193,9 @@ void deleteUserData(std::vector<AccountProperties>& accounts) {
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
     accounts.erase(accounts.begin() + p);
+
+    std::cout << SUCCESSFUL_ACCOUNT_DELETE << std::endl;
+    system("pause");
 }
 
 void approveAccounts(std::vector<AccountProperties>& accounts) {
@@ -249,6 +263,9 @@ void blockAccounts(std::vector<AccountProperties>& accounts) {
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
     accounts[p].isHaveAccess = false;
+
+    std::cout << SUCCESSFUL_ACCOUNT_BLOCK << std::endl;
+    system("pause");
 }
 
 void unblockAccounts(std::vector<AccountProperties>& accounts) {
@@ -267,6 +284,9 @@ void unblockAccounts(std::vector<AccountProperties>& accounts) {
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
     accounts[p].isHaveAccess = true;
+
+    std::cout << SUCCESSFUL_ACCOUNT_UNBLOCK << std::endl;
+    system("pause");
 }
 
 std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountProperties>& accounts) {
@@ -306,6 +326,9 @@ void approveOneAccount(std::vector<AccountProperties> &all_accounts) {
     int p = getAccountPositionByLogin(inputLogin(), all_accounts);
 
     all_accounts[p].isApproved = true;
+
+    std::cout << SUCCESSFUL_ACCOUNT_APPROVE << std::endl;
+    system("pause");
 }
 
 void unapproveOneAccount(std::vector<AccountProperties> &all_accounts) {
@@ -315,6 +338,9 @@ void unapproveOneAccount(std::vector<AccountProperties> &all_accounts) {
     int p = getAccountPositionByLogin(inputLogin(), all_accounts);
 
     all_accounts.erase(all_accounts.begin() + p);
+
+    std::cout << SUCCESSFUL_ACCOUNT_UNAPPROVE << std::endl;
+    system("pause");
 }
 
 
@@ -322,6 +348,9 @@ void approveAllAccounts(std::vector<AccountProperties> &accounts) {
     for (auto &account : accounts) {
         account.isApproved = true;
     }
+
+    std::cout << SUCCESSFUL_ALL_ACCOUNTS_APPROVE << std::endl;
+    system("pause");
 }
 
 void unapproveAllAccounts(std::vector<AccountProperties> &accounts) {
@@ -333,4 +362,7 @@ void unapproveAllAccounts(std::vector<AccountProperties> &accounts) {
             ++i;
         }
     }
+
+    std::cout << SUCCESSFUL_ALL_ACCOUNTS_UNAPPROVE << std::endl;
+    system("pause");
 }
