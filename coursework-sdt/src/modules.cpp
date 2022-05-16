@@ -78,7 +78,7 @@ void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>
     }
 }
 
-void registerUserPage(std::vector<AccountProperties>& accounts) {
+void registerUserPage(std::vector<AccountProperties>& accounts, bool isAdmin) {
     std::string login, password;
 
     while (true) {
@@ -107,9 +107,16 @@ void registerUserPage(std::vector<AccountProperties>& accounts) {
         }
     }
 
-    addAccount(createNewUser(login, password), accounts);
+    AccountProperties new_user = createNewUser(login, password);
 
     std::cout << SUCCESSFUL_ACCOUNT_REGISTRATION_MESSAGE << std::endl;
+
+    if (isAdmin) {
+        new_user.isApproved = true;
+    } else {
+        std::cout << WAIT_CONFIRMATION << std::endl;
+    }
+    addAccount(new_user, accounts);
 }
 
 void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& accounts) {
@@ -129,8 +136,8 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
 
         switch (choice) {
             case 1:
-                registerUserPage(accounts);
-                accounts.back().isApproved = true;
+                registerUserPage(accounts, true);
+                system("pause");
                 break;
             case 2:
                 editUserData(accounts);
@@ -201,7 +208,8 @@ void showMainModule(std::vector<AccountProperties> &accounts) {
                 logInSystem(accounts);
                 break;
             case 2:
-                registerUserPage(accounts);
+                registerUserPage(accounts, false);
+                system("pause");
                 break;
             case 3:
             default:
