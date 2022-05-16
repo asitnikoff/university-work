@@ -86,6 +86,11 @@
 #define SUCCESSFUL_ACCOUNT_APPROVE "Аккаунт пользователя подтвёрждён."
 #define SUCCESSFUL_ALL_ACCOUNTS_APPROVE "Все аккаунты подтверждены."
 #define SUCCESSFUL_ALL_ACCOUNTS_UNAPPROVE "Все аккаунты не подтверждены."
+#define DANGER_ZONE "ОПАСНАЯ ЗОНА!!!"
+#define DELETE_ACCOUNT "Удалить аккаунт."
+#define ARE_YOU_SURE_TO_DELETE "Вы уверены, что хотите удалить свой аккаунт?"
+#define YES "Да."
+#define NO "Нет."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

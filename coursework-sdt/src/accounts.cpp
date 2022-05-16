@@ -366,3 +366,14 @@ void unapproveAllAccounts(std::vector<AccountProperties> &accounts) {
     std::cout << SUCCESSFUL_ALL_ACCOUNTS_UNAPPROVE << std::endl;
     system("pause");
 }
+
+void deleteYourAccount(const AccountProperties &account, std::vector<AccountProperties> &accounts) {
+    std::cout << ARE_YOU_SURE_TO_DELETE << std::endl;
+    std::cout << "1) " << YES << std::endl;
+    std::cout << "2) " << NO << std::endl;
+
+    int choice = getch() - '0';
+    if (choice == 1) {
+        accounts.erase(accounts.begin() + getAccountPositionByLogin(account.login, accounts));
+    }
+}

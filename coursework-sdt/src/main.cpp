@@ -2,7 +2,7 @@
 #include <windows.h>
 
 #include "accounts.h"
-#include "other-functions.h"
+#include "modules.h"
 #include "sorts.h"
 #include "system-access.h"
 
@@ -15,7 +15,7 @@ int main() {
     std::vector<AccountProperties> accounts;
     readAccounts(accounts);
 
-    showMainMenu(accounts);
+    showMainModule(accounts);
 
     writeAccounts(accounts);
 

@@ -22,7 +22,6 @@ void readAccounts(std::vector<AccountProperties>&);
 void writeAccounts(const std::vector<AccountProperties>&);
 AccountProperties createNewUser(std::string, std::string);
 void addAccount(const AccountProperties&, std::vector<AccountProperties>&);
-bool isAccountExist(const std::string&, const std::vector<AccountProperties>&);
 void showListOfUsers(const std::vector<AccountProperties>&);
 void editUserData(std::vector<AccountProperties>&);
 int getAccountPositionByLogin(std::string, const std::vector<AccountProperties>&);
@@ -41,6 +40,7 @@ void approveOneAccount(std::vector<AccountProperties>&);
 void unapproveOneAccount(std::vector<AccountProperties>&);
 void approveAllAccounts(std::vector<AccountProperties>&);
 void unapproveAllAccounts(std::vector<AccountProperties>&);
+void deleteYourAccount(const AccountProperties&, std::vector<AccountProperties>&);
 
 
 #endif

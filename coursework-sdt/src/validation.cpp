@@ -31,7 +31,7 @@ bool isValidLogin(const std::string& login) {
 }
 
 bool isUniqueLogin(const std::string& login, const std::vector<AccountProperties>& accounts) {
-    return !isAccountExist(login, accounts);
+    return !isLoginExist(login, accounts);
 }
 
 bool isValidPassword(const std::string& password) {
@@ -46,4 +46,13 @@ bool isValidPassword(const std::string& password) {
 bool isTryAgain() {
     std::cout << TRY_AGAIN << std::endl;
     return ((char)getch() == '1');
+}
+
+bool isLoginExist(const std::string &login, const std::vector<AccountProperties> &accounts) {
+    for (const auto &account : accounts) {
+        if (account.login == login) {
+            return true;
+        }
+    }
+    return false;
 }

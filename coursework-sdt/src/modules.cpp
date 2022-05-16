@@ -51,7 +51,7 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
         showAdminUserModule(account, accounts);
     }
     else {
-        showCommonUserModule(account);
+        showCommonUserModule(account, accounts);
     }
 }
 
@@ -154,20 +154,54 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
     }
 }
 
-void showCommonUserModule(AccountProperties& account) {
+void showCommonUserModule(AccountProperties& account, std::vector<AccountProperties>& accounts) {
     while (true) {
         std::cout << "1) " << OPEN_DATA_MANAGER << std::endl;
         std::cout << "2) " << CHANGE_PASSWORD << std::endl;
-        std::cout << "3) " << LOG_OUT_MESSAGE << std::endl;
+        std::cout << "3) " << LOG_OUT_MESSAGE << std::endl << std::endl;
+
+        std::cout << DANGER_ZONE << std::endl;
+        std::cout << "0) " << DELETE_ACCOUNT << std::endl;
+
 
         int choice = getch() - '0';
 
         switch (choice) {
+            case 0:
+                deleteYourAccount(account, accounts);
+                if (!isLoginExist(account.login, accounts)) {
+                    return;
+                }
             case 1:
                 useProductManager();
                 break;
             case 2:
                 editUserPassword(account);
+                break;
+            case 3:
+            default:
+                return;
+        }
+    }
+}
+
+void showMainModule(std::vector<AccountProperties> &accounts) {
+    while (true) {
+        system("cls");
+        std::cout << WELCOME_MESSAGE << std::endl << std::endl;
+
+        std::cout << "1) " << LOGIN_SYSTEM_MESSAGE << std::endl;
+        std::cout << "2) " << REGISTER_MESSAGE << std::endl;
+        std::cout << "3) " << CLOSE_SYSTEM_MESSAGE << std::endl;
+
+        int choice = getch() - '0';
+
+        switch (choice) {
+            case 1:
+                logInSystem(accounts);
+                break;
+            case 2:
+                registerUserPage(accounts);
                 break;
             case 3:
             default:
