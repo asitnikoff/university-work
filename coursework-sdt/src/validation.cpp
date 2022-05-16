@@ -27,7 +27,7 @@ bool isValidLogin(const std::string& login) {
             return false;
         }
     }
-    return true;
+    return !login.empty();
 }
 
 bool isUniqueLogin(const std::string& login, const std::vector<AccountProperties>& accounts) {
