@@ -42,6 +42,7 @@ void unapproveAllAccounts(std::vector<AccountProperties>&);
 void deleteYourAccount(const AccountProperties&, std::vector<AccountProperties>&);
 std::string inputLoginForBlock(std::string, const AccountProperties&, const std::vector<AccountProperties>&,
                                const std::vector<AccountProperties>&);
+std::string inputLoginForDelete(std::string, const AccountProperties&, const std::vector<AccountProperties>&);
 
 
 #endif

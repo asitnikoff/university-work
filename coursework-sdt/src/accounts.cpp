@@ -162,28 +162,12 @@ void editUserRole(AccountProperties& account) {
 }
 
 void deleteUserData(const AccountProperties& account, std::vector<AccountProperties>& accounts) {
-    std::string login;
-    while (true) {
-        system("cls");
-        showListOfUsers(accounts);
-        std::cout << INPUT_USER_LOGIN_FOR_DELETE;
-        fflush(stdout);
-        login = inputLogin();
-        if (!isAccountExist(login, accounts)) {
-            std::cout << LOGIN_DOESNT_EXIST << std::endl;
-        } else if (!isValidLogin(login)) {
-            std::cout << INCORRECT_LOGIN << std::endl;
-        } else if (account.login == login) {
-            std::cout << CANT_DELETE_YOURSELF << std::endl;
-        } else {
-            break;
-        }
-        if (!isTryAgain()) {
-            return;
-        }
+    std::string login = inputLoginForDelete(INPUT_USER_LOGIN_FOR_DELETE, account, accounts);
+    if (login.empty()) {
+        return;
     }
 
-    int p = getAccountPositionByLogin(inputLogin(), accounts);
+    int p = getAccountPositionByLogin(login, accounts);
 
     accounts.erase(accounts.begin() + p);
 
@@ -403,9 +387,38 @@ std::string inputLoginForBlock(std::string message, const AccountProperties& acc
         } else if (login == account.login) {
             std::cout << CANT_BLOCK_YOURSELF << std::endl;
         } else if (!isAccountExist(login, unblocked_accounts)) {
-            std::cout << USER_ALREADY_BLOCKED << std::endl;
+            std::cout << USER_ALREADY_BLOCKED_OR_THIS_IS_ADMIN << std::endl;
         } else {
             break;
+        }
+        if (!isTryAgain()) {
+            return "";
+        }
+    }
+    return login;
+}
+
+std::string inputLoginForDelete(std::string message, const AccountProperties &account,
+                                const std::vector<AccountProperties> &accounts) {
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(accounts);
+        login = inputCorrectLogin(message, accounts);
+        if (login.empty()) {
+            return "";
+        }
+        if (!isAccountExist(login, accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else if (login == account.login) {
+            std::cout << CANT_DELETE_YOURSELF << std::endl;
+        } else {
+            AccountProperties current_account = getAccountByLogin(login, accounts);
+            if (current_account.isAdmin) {
+                std::cout << CANT_DELETE_ADMIN << std::endl;
+            } else {
+                break;
+            }
         }
         if (!isTryAgain()) {
             return "";
