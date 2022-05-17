@@ -159,7 +159,7 @@ void useAccountManager(AccountProperties& account, std::vector<AccountProperties
                 approveAccounts(accounts);
                 break;
             case 5:
-                blockAccounts(accounts);
+                blockAccounts(account, accounts);
                 break;
             case 6:
                 unblockAccounts(accounts);

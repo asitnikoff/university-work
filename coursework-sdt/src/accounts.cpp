@@ -249,7 +249,7 @@ std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountPr
     return unapproved_accounts;
 }
 
-void blockAccounts(std::vector<AccountProperties>& accounts) {
+void blockAccounts(const AccountProperties& account, std::vector<AccountProperties>& accounts) {
     system("cls");
     std::vector<AccountProperties> unblocked_accounts = getListOfUnblockedAccounts(accounts);
     if (unblocked_accounts.empty()) {
@@ -257,10 +257,26 @@ void blockAccounts(std::vector<AccountProperties>& accounts) {
         system("pause");
         return;
     }
-    showListOfUsers(unblocked_accounts);
-
-    std::cout << INPUT_USER_LOGIN_FOR_BLOCK;
-    fflush(stdout);
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(accounts);
+        std::cout << INPUT_USER_LOGIN;
+        fflush(stdout);
+        login = inputLogin();
+        if (!isAccountExist(login, accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else if (!isValidLogin(login)) {
+            std::cout << INCORRECT_LOGIN << std::endl;
+        } else if (account.login == login) {
+            std::cout << CANT_BLOCK_YOURSELF << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return;
+        }
+    }
 
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 

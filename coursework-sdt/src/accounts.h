@@ -33,7 +33,7 @@ void approveAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountProperties>&);
 void unblockAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountProperties>&);
-void blockAccounts(std::vector<AccountProperties>&);
+void blockAccounts(const AccountProperties&, std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfUnblockedAccounts(std::vector<AccountProperties>&);
 void approveOneAccount(std::vector<AccountProperties>&);
 void unapproveOneAccount(std::vector<AccountProperties>&);

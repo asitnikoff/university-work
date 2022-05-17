@@ -93,6 +93,7 @@
 #define INCORRECT_LOGIN "Логин не соответствует шаблону."
 #define CANT_DELETE_YOURSELF "Нельзя удалить свой аккаунт через модуль управлениями учётными записями."
 #define LOGIN_DOESNT_EXIST "Такого пользователя не существует."
+#define CANT_BLOCK_YOURSELF "Нельзя блокировать самого себя."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
