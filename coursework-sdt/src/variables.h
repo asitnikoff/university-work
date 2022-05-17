@@ -27,7 +27,7 @@
 #define REQUIREMENTS_FOR_PASSWORD "Пароль состоять из маленьких и больших латинских символов и цифр."
 #define INCORRECT_LOGIN_OR_PASSWORD_MESSAGE "Неверный логин или пароль."
 #define ADD_NEW_USER "Добавить нового пользователя."
-#define EDIT_USER "Редактировать пользователя."
+#define EDIT_USER "Редактировать данные пользователя."
 #define DELETE_USER "Удалить пользователя."
 #define APPROVE_USERS_REGISTRATION "Подтверждение учётной записи пользователя."
 #define BLOCK_USER "Заблокировать пользователя."
@@ -97,6 +97,8 @@
 #define CANT_DELETE_ADMIN "Нельзя удалить администратора."
 #define CONFIRM_PASSWORD_MESSAGE "Подтвердите пароль: "
 #define PASSWORDS_DONT_MATCH "Пароли не совпадают."
+#define NEW_PASSWORD_INPUT_MESSAGE "Введите новый пароль: "
+#define NEW_PASSWORD_SHOULDNT_MATCH_WITH_OLD "Новый пароль не должен совпадать со старым."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

@@ -104,19 +104,32 @@ void showListOfUsers(const std::vector<AccountProperties>& accounts) {
 }
 
 void editUserData(std::vector<AccountProperties>& accounts) {
-    system("cls");
-    showListOfUsers(accounts);
+    std::string login;
+    while (true) {
+        login = inputCorrectLogin(INPUT_USER_LOGIN, accounts);
+        if (login.empty()) {
+            return;
+        }
+        if (!isAccountExist(login, accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return;
+        }
+    }
 
-    std::cout << INPUT_USER_LOGIN;
-    fflush(stdout);
-
-    int p = getAccountPositionByLogin(inputLogin(), accounts);
+    int p = getAccountPositionByLogin(login, accounts);
 
     std::cout << WHAT_CHANGE << std::endl;
     std::cout << "1) " << PASSWORD << std::endl;
     std::cout << "2) " << ROLE << std::endl;
 
-    int choice = getch() - '0';
+    int choice;
+    do {
+        choice = getch() - '0';
+    } while ((choice != 1) && (choice != 2));
 
     switch (choice) {
         case 1:
@@ -138,9 +151,27 @@ int getAccountPositionByLogin(std::string login, const std::vector<AccountProper
 }
 
 void editUserPassword(AccountProperties& account) {
-    std::cout << PASSWORD_INPUT_MESSAGE;
-    fflush(stdout);
-    std::string password = inputPassword();
+    std::string password, confirmation_password;
+    while (true) {
+        system("cls");
+        std::cout << NEW_PASSWORD_INPUT_MESSAGE;
+        fflush(stdout);
+        password = inputPassword();
+        std::cout << CONFIRM_PASSWORD_MESSAGE;
+        fflush(stdout);
+        confirmation_password = inputPassword();
+
+        if (password != confirmation_password) {
+            std::cout << PASSWORDS_DONT_MATCH << std::endl;
+        } else if (sha256(password + account.salt) == account.salted_hash_password){
+            std::cout << NEW_PASSWORD_SHOULDNT_MATCH_WITH_OLD << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return;
+        }
+    }
     account.salt = generateSalt(SALT_TEMPLATE);
     account.salted_hash_password= sha256(password + account.salt);
 
@@ -153,7 +184,10 @@ void editUserRole(AccountProperties& account) {
     std::cout << "1) " << ADMIN << std::endl;
     std::cout << "2) " << COMMON_USER << std::endl;
 
-    int choice = getch() - '0';
+    int choice;
+    do {
+        choice = getch() - '0';
+    } while ((choice != 1) && (choice != 2));
 
     account.isAdmin = (choice == 1);
 
