@@ -99,6 +99,7 @@
 #define PASSWORDS_DONT_MATCH "Пароли не совпадают."
 #define NEW_PASSWORD_INPUT_MESSAGE "Введите новый пароль: "
 #define NEW_PASSWORD_SHOULDNT_MATCH_WITH_OLD "Новый пароль не должен совпадать со старым."
+#define LOGIN_ALREADY_APPROVED "Пользователь уже был подтверждён."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

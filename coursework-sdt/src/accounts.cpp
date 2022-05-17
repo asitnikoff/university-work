@@ -230,10 +230,10 @@ void approveAccounts(std::vector<AccountProperties>& accounts) {
 
         switch (choice) {
             case 1:
-                approveOneAccount(accounts);
+                approveOneAccount(unapproved_accounts, accounts);
                 break;
             case 2:
-                unapproveOneAccount(accounts);
+                unapproveOneAccount(unapproved_accounts, accounts);
                 break;
             case 3:
                 approveAllAccounts(accounts);
@@ -346,11 +346,14 @@ AccountProperties getAccountByLogin(std::string login, const std::vector<Account
     return ret;
 }
 
-void approveOneAccount(std::vector<AccountProperties> &all_accounts) {
-    std::cout << INPUT_USER_LOGIN_FOR_APPROVE;
-    fflush(stdout);
+void approveOneAccount(std::vector<AccountProperties> &unapproved_accounts,
+                       std::vector<AccountProperties> &all_accounts) {
+    std::string login = inputLoginForApprove(INPUT_USER_LOGIN_FOR_APPROVE, unapproved_accounts, all_accounts);
+    if (login.empty()) {
+        return;
+    }
 
-    int p = getAccountPositionByLogin(inputLogin(), all_accounts);
+    int p = getAccountPositionByLogin(login, all_accounts);
 
     all_accounts[p].isApproved = true;
 
@@ -358,11 +361,14 @@ void approveOneAccount(std::vector<AccountProperties> &all_accounts) {
     system("pause");
 }
 
-void unapproveOneAccount(std::vector<AccountProperties> &all_accounts) {
-    std::cout << INPUT_USER_LOGIN_FOR_UNAPPROVE;
-    fflush(stdout);
+void unapproveOneAccount(std::vector<AccountProperties> &unapproved_accounts,
+                         std::vector<AccountProperties> &all_accounts) {
+    std::string login = inputLoginForUnapprove(INPUT_USER_LOGIN_FOR_UNAPPROVE, unapproved_accounts, all_accounts);
+    if (login.empty()) {
+        return;
+    }
 
-    int p = getAccountPositionByLogin(inputLogin(), all_accounts);
+    int p = getAccountPositionByLogin(login, all_accounts);
 
     all_accounts.erase(all_accounts.begin() + p);
 
@@ -380,11 +386,11 @@ void approveAllAccounts(std::vector<AccountProperties> &accounts) {
     system("pause");
 }
 
-void unapproveAllAccounts(std::vector<AccountProperties> &accounts) {
+void unapproveAllAccounts(std::vector<AccountProperties> &all_accounts) {
     int i = 0;
-    while (i < (int)accounts.size()) {
-        if (!accounts[i].isApproved) {
-            accounts.erase(accounts.begin() + i);
+    while (i < (int)all_accounts.size()) {
+        if (!all_accounts[i].isApproved) {
+            all_accounts.erase(all_accounts.begin() + i);
         } else {
             ++i;
         }
@@ -453,6 +459,54 @@ std::string inputLoginForDelete(std::string message, const AccountProperties &ac
             } else {
                 break;
             }
+        }
+        if (!isTryAgain()) {
+            return "";
+        }
+    }
+    return login;
+}
+
+std::string inputLoginForApprove(std::string message, const std::vector<AccountProperties> &unapproved_accounts,
+                                 const std::vector<AccountProperties> &all_accounts) {
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(unapproved_accounts);
+        login = inputCorrectLogin(message, unapproved_accounts);
+        if (login.empty()) {
+            return "";
+        }
+        if (!isAccountExist(login, all_accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else if (!isAccountExist(login, unapproved_accounts)) {
+            std::cout << LOGIN_ALREADY_APPROVED << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return "";
+        }
+    }
+    return login;
+}
+
+std::string inputLoginForUnapprove(std::string message, const std::vector<AccountProperties> &unapproved_accounts,
+                                   const std::vector<AccountProperties> &all_accounts) {
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(unapproved_accounts);
+        login = inputCorrectLogin(message, unapproved_accounts);
+        if (login.empty()) {
+            return "";
+        }
+        if (!isAccountExist(login, all_accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else if (!isAccountExist(login, unapproved_accounts)) {
+            std::cout << LOGIN_ALREADY_APPROVED << std::endl;
+        } else {
+            break;
         }
         if (!isTryAgain()) {
             return "";
