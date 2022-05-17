@@ -79,7 +79,7 @@ void showAdminUserModule(AccountProperties& account, std::vector<AccountProperti
                 useAccountManager(account, accounts);
                 break;
             case 2:
-                useProductManager();
+                useAdminProductManager();
                 break;
             case 3:
             default:
@@ -179,13 +179,13 @@ void useAccountManager(AccountProperties& account, std::vector<AccountProperties
 
 void showCommonUserModule(AccountProperties& account, std::vector<AccountProperties>& accounts) {
     while (true) {
+        system("cls");
         std::cout << "1) " << OPEN_DATA_MANAGER << std::endl;
         std::cout << "2) " << CHANGE_PASSWORD << std::endl;
         std::cout << "3) " << LOG_OUT_MESSAGE << std::endl << std::endl;
 
         std::cout << DANGER_ZONE << std::endl;
         std::cout << "0) " << DELETE_ACCOUNT << std::endl;
-
 
         int choice = getch() - '0';
 
@@ -197,7 +197,7 @@ void showCommonUserModule(AccountProperties& account, std::vector<AccountPropert
                 }
                 break;
             case 1:
-                useProductManager();
+                useCommonUserProductManager();
                 break;
             case 2:
                 editUserPassword(account);

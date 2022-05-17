@@ -10,6 +10,7 @@
 void clearInputBuffer();
 void showAccountWelcomeMessage(const std::string&);
 bool isConfirmChanges(std::string);
+void showMessage(std::string);
 
 
 #endif

@@ -8,12 +8,14 @@
 #include "products.h"
 #include "variables.h"
 #include "sorts.h"
+#include "other-functions.h"
 
-void useProductManager() {
+void useCommonUserProductManager() {
     std::vector<ProductProperties> products;
     readProducts(products);
 
     while (true) {
+        system("cls");
         showListOfProducts(products);
 
         std::cout << "1) " << SORT_BY_DATE << std::endl;
@@ -22,38 +24,35 @@ void useProductManager() {
         std::cout << "4) " << SORT_BY_PRODUCT_AMOUNT << std::endl;
         std::cout << "5) " << SORT_BY_RESPONSIBLE_NAME << std::endl;
         std::cout << "6) " << SHOW_LIST_OF_RELEASED_PRODUCTS << std::endl;
-        std::cout << "7) " << ADD_PRODUCT << std::endl;
-        std::cout << "8) " << DELETE_PRODUCT << std::endl;
-        std::cout << "9) " << BACK_MESSAGE << std::endl;
+        std::cout << "7) " << BACK_MESSAGE << std::endl;
 
         int choice = getch() - '0';
 
         switch (choice) {
             case 1:
                 sortProductsByDate(products);
+                showMessage(WAS_SORTED_BY_DATE);
                 break;
             case 2:
                 sortProductsByShopNumber(products);
+                showMessage(WAS_SORTED_BY_SHOP_NUMBER);
                 break;
             case 3:
                 sortProductsByProductName(products);
+                showMessage(WAS_SORTED_BY_PRODUCT_NAME);
                 break;
             case 4:
                 sortProductsByProductAmount(products);
+                showMessage(WAS_SORTED_BY_PRODUCT_AMOUNT);
                 break;
             case 5:
                 sortProductsByResponsibleName(products);
+                showMessage(WAS_SORTED_BY_RESPONSIBLE_NAME);
                 break;
             case 6:
                 showListOfReleasedProducts(products);
                 break;
             case 7:
-                addProduct(products);
-                break;
-            case 8:
-                deleteProduct(products);
-                break;
-            case 9:
                 writeProducts(products);
             default:
                 return;
@@ -156,3 +155,5 @@ void deleteProduct(std::vector<ProductProperties> &products) {
 
     products.erase(products.begin() + p - 1);
 }
+
+void useAdminProductManager() { }

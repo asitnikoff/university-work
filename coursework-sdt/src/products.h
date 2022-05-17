@@ -19,7 +19,8 @@ struct ProductProperties {
 };
 
 
-void useProductManager();
+void useCommonUserProductManager();
+void useAdminProductManager();
 void showListOfProducts(const std::vector<ProductProperties>&);
 void addProduct(std::vector<ProductProperties>&);
 void deleteProduct(std::vector<ProductProperties>&);

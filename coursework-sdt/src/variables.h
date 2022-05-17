@@ -93,7 +93,8 @@
 #define CANT_DELETE_YOURSELF "Нельзя удалить свой аккаунт через модуль управлениями учётными записями."
 #define LOGIN_DOESNT_EXIST "Такого пользователя не существует."
 #define CANT_BLOCK_YOURSELF "Нельзя блокировать самого себя."
-#define USER_ALREADY_BLOCKED_OR_THIS_IS_ADMIN "Пользователь до этого уже был заблокирован или вы пытаетесь заблокировать администратора."
+#define USER_ALREADY_BLOCKED_OR_THIS_IS_ADMIN "Пользователь до этого уже был заблокирован или " \
+                                              "вы пытаетесь заблокировать администратора."
 #define CANT_DELETE_ADMIN "Нельзя удалить администратора."
 #define CONFIRM_PASSWORD_MESSAGE "Подтвердите пароль: "
 #define PASSWORDS_DONT_MATCH "Пароли не совпадают."
@@ -104,6 +105,11 @@
 #define WAIT_CONFIRMATION_FOR_UNBLOCK "Вы уверены, что хотите разблокировать этого пользователя?"
 #define WAIT_CONFIRMATION_FOR_DELETE "Вы уверены, что хотите удалить этого пользователя?"
 #define WAIT_CONFIRMATION_FOR_BLOCK "Вы уверены, что хотите заблокировать этого пользователя?"
+#define WAS_SORTED_BY_DATE "Продукты были отсортированы по возрастанию даты."
+#define WAS_SORTED_BY_SHOP_NUMBER "Продукты были отсортированы по возрастанию номера цеха."
+#define WAS_SORTED_BY_PRODUCT_NAME "Продукты были отсортированы по возрастанию их названия."
+#define WAS_SORTED_BY_PRODUCT_AMOUNT "Продукты были отсортированы по возрастанию их количества."
+#define WAS_SORTED_BY_RESPONSIBLE_NAME "Продукты были отсортированы по возрастанию имени ответственного."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

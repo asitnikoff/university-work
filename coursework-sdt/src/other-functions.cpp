@@ -30,3 +30,8 @@ bool isConfirmChanges(std::string message) {
 
     return (choice == 1);
 }
+
+void showMessage(std::string message) {
+    std::cout << message << std::endl;
+    system("pause");
+}
