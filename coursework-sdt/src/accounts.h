@@ -46,6 +46,8 @@ std::string inputLoginForDelete(std::string, const AccountProperties&, const std
 std::string inputLoginForApprove(std::string, const std::vector<AccountProperties>&,
                                  const std::vector<AccountProperties>&);
 std::string inputLoginForUnapprove(std::string, const std::vector<AccountProperties>&,
+                                   const std::vector<AccountProperties>&);
+std::string inputLoginForUnblock(std::string, const std::vector<AccountProperties>&,
                                  const std::vector<AccountProperties>&);
 
 

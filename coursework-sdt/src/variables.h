@@ -100,6 +100,10 @@
 #define NEW_PASSWORD_INPUT_MESSAGE "Введите новый пароль: "
 #define NEW_PASSWORD_SHOULDNT_MATCH_WITH_OLD "Новый пароль не должен совпадать со старым."
 #define LOGIN_ALREADY_APPROVED "Пользователь уже был подтверждён."
+#define LOGIN_ALREADY_UNBLOCKED "Пользователь уже разблокирован."
+#define WAIT_CONFIRMATION_FOR_UNBLOCK "Вы уверены, что хотите разблокировать этого пользователя?"
+#define WAIT_CONFIRMATION_FOR_DELETE "Вы уверены, что хотите удалить этого пользователя?"
+#define WAIT_CONFIRMATION_FOR_BLOCK "Вы уверены, что хотите заблокировать этого пользователя?"
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
