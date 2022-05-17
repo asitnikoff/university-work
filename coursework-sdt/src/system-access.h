@@ -9,6 +9,7 @@
 
 std::string inputLogin();
 std::string inputPassword();
+std::string inputCorrectLogin(std::string, const std::vector<AccountProperties>&);
 
 
 #endif

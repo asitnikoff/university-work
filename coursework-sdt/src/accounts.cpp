@@ -91,15 +91,6 @@ void addAccount(const AccountProperties& user, std::vector<AccountProperties>& a
     accounts.push_back(user);
 }
 
-bool isAccountExist(const std::string& login, const std::vector<AccountProperties>& accounts) {
-    for (const auto &account : accounts) {
-        if (account.login == login) {
-            return true;
-        }
-    }
-    return false;
-}
-
 void showListOfUsers(const std::vector<AccountProperties>& accounts) {
     for (const auto &user : accounts) {
         std::cout << "login: [" << user.login << "]\n";
@@ -175,7 +166,7 @@ void deleteUserData(const AccountProperties& account, std::vector<AccountPropert
     while (true) {
         system("cls");
         showListOfUsers(accounts);
-        std::cout << INPUT_USER_LOGIN;
+        std::cout << INPUT_USER_LOGIN_FOR_DELETE;
         fflush(stdout);
         login = inputLogin();
         if (!isAccountExist(login, accounts)) {
@@ -251,34 +242,18 @@ std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountPr
 
 void blockAccounts(const AccountProperties& account, std::vector<AccountProperties>& accounts) {
     system("cls");
-    std::vector<AccountProperties> unblocked_accounts = getListOfUnblockedAccounts(accounts);
+    std::vector<AccountProperties> unblocked_accounts = getListOfUnblockedAccounts(account, accounts);
     if (unblocked_accounts.empty()) {
         std::cout << NO_UNBLOCKED_ACCOUNTS << std::endl;
         system("pause");
         return;
     }
-    std::string login;
-    while (true) {
-        system("cls");
-        showListOfUsers(accounts);
-        std::cout << INPUT_USER_LOGIN;
-        fflush(stdout);
-        login = inputLogin();
-        if (!isAccountExist(login, accounts)) {
-            std::cout << LOGIN_DOESNT_EXIST << std::endl;
-        } else if (!isValidLogin(login)) {
-            std::cout << INCORRECT_LOGIN << std::endl;
-        } else if (account.login == login) {
-            std::cout << CANT_BLOCK_YOURSELF << std::endl;
-        } else {
-            break;
-        }
-        if (!isTryAgain()) {
-            return;
-        }
+    std::string login = inputLoginForBlock(INPUT_USER_LOGIN_FOR_BLOCK, account, unblocked_accounts, accounts);
+    if (login.empty()) {
+        return;
     }
 
-    int p = getAccountPositionByLogin(inputLogin(), accounts);
+    int p = getAccountPositionByLogin(login, accounts);
 
     accounts[p].isHaveAccess = false;
 
@@ -294,10 +269,25 @@ void unblockAccounts(std::vector<AccountProperties>& accounts) {
         system("pause");
         return;
     }
-    showListOfUsers(blocked_accounts);
 
-    std::cout << INPUT_USER_LOGIN_FOR_UNBLOCK;
-    fflush(stdout);
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(accounts);
+        std::cout << INPUT_USER_LOGIN_FOR_UNBLOCK;
+        fflush(stdout);
+        login = inputLogin();
+        if (!isAccountExist(login, accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else if (!isValidLogin(login)) {
+            std::cout << INCORRECT_LOGIN << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return;
+        }
+    }
 
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
@@ -317,10 +307,11 @@ std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountPrope
     return blocked_accounts;
 }
 
-std::vector<AccountProperties> getListOfUnblockedAccounts(std::vector<AccountProperties>& accounts) {
+std::vector<AccountProperties> getListOfUnblockedAccounts(const AccountProperties& current_account,
+                                                          std::vector<AccountProperties>& accounts) {
     std::vector<AccountProperties> unblocked_accounts;
     for (auto& account : accounts) {
-        if (account.isHaveAccess) {
+        if ((account.login != current_account.login) && account.isHaveAccess && !account.isAdmin) {
             unblocked_accounts.push_back(account);
         }
     }
@@ -394,4 +385,31 @@ void deleteYourAccount(const AccountProperties &account, std::vector<AccountProp
     if (choice == 1) {
         accounts.erase(accounts.begin() + getAccountPositionByLogin(account.login, accounts));
     }
+}
+
+std::string inputLoginForBlock(std::string message, const AccountProperties& account,
+                               const std::vector<AccountProperties> &unblocked_accounts,
+                               const std::vector<AccountProperties> &all_accounts) {
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(unblocked_accounts);
+        login = inputCorrectLogin(message, unblocked_accounts);
+        if (login.empty()) {
+            return "";
+        }
+        if (!isAccountExist(login, all_accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else if (login == account.login) {
+            std::cout << CANT_BLOCK_YOURSELF << std::endl;
+        } else if (!isAccountExist(login, unblocked_accounts)) {
+            std::cout << USER_ALREADY_BLOCKED << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return "";
+        }
+    }
+    return login;
 }

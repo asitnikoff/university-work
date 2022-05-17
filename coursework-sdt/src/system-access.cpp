@@ -37,3 +37,23 @@ std::string inputPassword() {
 
     return password;
 }
+
+std::string inputCorrectLogin(std::string message, const std::vector<AccountProperties> &accounts) {
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(accounts);
+        std::cout << message;
+        fflush(stdout);
+        login = inputLogin();
+        if (!isValidLogin(login)) {
+            std::cout << INCORRECT_LOGIN << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return "";
+        }
+    }
+    return login;
+}

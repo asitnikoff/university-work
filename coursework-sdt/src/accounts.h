@@ -34,12 +34,14 @@ std::vector<AccountProperties> getListOfUnapprovedAccounts(std::vector<AccountPr
 void unblockAccounts(std::vector<AccountProperties>&);
 std::vector<AccountProperties> getListOfBlockedAccounts(std::vector<AccountProperties>&);
 void blockAccounts(const AccountProperties&, std::vector<AccountProperties>&);
-std::vector<AccountProperties> getListOfUnblockedAccounts(std::vector<AccountProperties>&);
+std::vector<AccountProperties> getListOfUnblockedAccounts(const AccountProperties&, std::vector<AccountProperties>&);
 void approveOneAccount(std::vector<AccountProperties>&);
 void unapproveOneAccount(std::vector<AccountProperties>&);
 void approveAllAccounts(std::vector<AccountProperties>&);
 void unapproveAllAccounts(std::vector<AccountProperties>&);
 void deleteYourAccount(const AccountProperties&, std::vector<AccountProperties>&);
+std::string inputLoginForBlock(std::string, const AccountProperties&, const std::vector<AccountProperties>&,
+                               const std::vector<AccountProperties>&);
 
 
 #endif

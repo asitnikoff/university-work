@@ -56,3 +56,12 @@ bool isLoginExist(const std::string &login, const std::vector<AccountProperties>
     }
     return false;
 }
+
+bool isAccountExist(const std::string& login, const std::vector<AccountProperties>& accounts) {
+    for (const auto &account : accounts) {
+        if (account.login == login) {
+            return true;
+        }
+    }
+    return false;
+}

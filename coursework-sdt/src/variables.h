@@ -44,7 +44,7 @@
 #define INPUT_USER_LOGIN_FOR_APPROVE "Введите логин пользователя для подтверждения: "
 #define INPUT_USER_LOGIN_FOR_UNAPPROVE "Введите логин пользователя для отклонения: "
 #define INPUT_USER_LOGIN_FOR_BLOCK "Введите логин пользователя для блокировки: "
-#define INPUT_USER_LOGIN_FOR_ADMIN_ROOT "Введите логин пользователя для выдачи прав администратора: "
+#define INPUT_USER_LOGIN_FOR_DELETE "Введите логин пользователя для удаления: "
 #define WELCOME_MESSAGE "Добро пожаловать в систему расчёта выпускаемой продукции!"
 #define NOT_APPROVED_MESSAGE "Данный аккаунт ещё не подтверждён администратором."
 #define OPEN_DATA_MANAGER "Открыть систему учёта выпускаемой предприятием продукции."
@@ -68,14 +68,13 @@
 #define LOGIN_NOT_IN_REQUIREMENTS "Логин не удовлетворяет шаблону."
 #define LOGIN_NOT_UNIQUE "Такой логин уже существует. Придумайте другой."
 #define PASSWORD_NOT_IN_REQUIREMENTS "Пароль не удовлетворяет шаблону."
-#define NO_UNAPPROVED_ACCOUNTS "Все аккаунты подтверждены."
-#define NO_UNBLOCKED_ACCOUNTS "Все аккаунты заблокированы."
+#define NO_UNAPPROVED_ACCOUNTS "Нет таких аккаунтов, которые можно подтвердить."
+#define NO_UNBLOCKED_ACCOUNTS "Нет таких аккаунтов, которые можно заблокировать."
 #define NO_BLOCKED_ACCOUNTS "Нет заблокированных аккаунтов."
 #define APPROVE_ONE_ACCOUNT "Подтвердить регистрацию аккаунта."
 #define UNAPPROVE_ONE_ACCOUNT "Отклонить регистрацию аккаунта."
 #define APPROVE_ALL_ACCOUNTS "Подтвердить все аккаунты."
 #define UNAPPROVE_ALL_ACCOUNTS "Отклонить все заявки на регистрацию."
-#define SUCCESSFUL_LOGIN_CHANGE "Логин был успешно изменён."
 #define SUCCESSFUL_PASSWORD_CHANGE "Пароль был успешно изменён."
 #define SUCCESSFUL_ROLE_CHANGE "Роль пользователя была успешно изменена."
 #define SUCCESSFUL_ACCOUNT_DELETE "Пользователь был успешно удалён."
@@ -94,6 +93,7 @@
 #define CANT_DELETE_YOURSELF "Нельзя удалить свой аккаунт через модуль управлениями учётными записями."
 #define LOGIN_DOESNT_EXIST "Такого пользователя не существует."
 #define CANT_BLOCK_YOURSELF "Нельзя блокировать самого себя."
+#define USER_ALREADY_BLOCKED "Пользователь до этого уже был заблокирован."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
