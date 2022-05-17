@@ -55,7 +55,7 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
     }
 }
 
-void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>& accounts) {
+void showAdminUserModule(AccountProperties& account, std::vector<AccountProperties>& accounts) {
     while (true) {
         system("cls");
         showAccountWelcomeMessage(user.login);
@@ -66,7 +66,7 @@ void showAdminUserModule(AccountProperties& user, std::vector<AccountProperties>
 
         switch (choice) {
             case 1:
-                useAccountManager(user, accounts);
+                useAccountManager(account, accounts);
                 break;
             case 2:
                 useProductManager();
@@ -117,9 +117,10 @@ void registerUserPage(std::vector<AccountProperties>& accounts, bool isAdmin) {
         std::cout << WAIT_CONFIRMATION << std::endl;
     }
     addAccount(new_user, accounts);
+    system("pause");
 }
 
-void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& accounts) {
+void useAccountManager(AccountProperties& account, std::vector<AccountProperties>& accounts) {
     while (true) {
         system("cls");
         showListOfUsers(accounts);
@@ -137,7 +138,6 @@ void useAccountManager(AccountProperties& user, std::vector<AccountProperties>& 
         switch (choice) {
             case 1:
                 registerUserPage(accounts, true);
-                system("pause");
                 break;
             case 2:
                 editUserData(accounts);
@@ -209,7 +209,6 @@ void showMainModule(std::vector<AccountProperties> &accounts) {
                 break;
             case 2:
                 registerUserPage(accounts, false);
-                system("pause");
                 break;
             case 3:
             default:
