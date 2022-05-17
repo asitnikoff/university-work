@@ -103,13 +103,19 @@ void registerUserPage(std::vector<AccountProperties>& accounts, bool isAdmin) {
         std::cout << PASSWORD_INPUT_MESSAGE;
         fflush(stdout);
         password = inputPassword();
+        std::cout << CONFIRM_PASSWORD_MESSAGE;
+        fflush(stdout);
+        std::string confirmation_password = inputPassword();
         if (!isValidLogin(login)) {
             std::cout << LOGIN_NOT_IN_REQUIREMENTS << std::endl;
         } else if (!isUniqueLogin(login, accounts)) {
             std::cout << LOGIN_NOT_UNIQUE << std::endl;
         } else if (!isValidPassword(password)) {
             std::cout << PASSWORD_NOT_IN_REQUIREMENTS << std::endl;
-        } else {
+        } else if (password != confirmation_password) {
+            std::cout << PASSWORDS_DONT_MATCH << std::endl;
+        }
+        else {
             break;
         }
         if (!isTryAgain()) {

@@ -95,7 +95,8 @@
 #define CANT_BLOCK_YOURSELF "Нельзя блокировать самого себя."
 #define USER_ALREADY_BLOCKED_OR_THIS_IS_ADMIN "Пользователь до этого уже был заблокирован или вы пытаетесь заблокировать администратора."
 #define CANT_DELETE_ADMIN "Нельзя удалить администратора."
-#define CANT_BLOCK_ADMIN "Нельзя заблокировать администратора."
+#define CONFIRM_PASSWORD_MESSAGE "Подтвердите пароль: "
+#define PASSWORDS_DONT_MATCH "Пароли не совпадают."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
