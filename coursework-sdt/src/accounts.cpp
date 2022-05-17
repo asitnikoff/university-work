@@ -9,6 +9,7 @@
 #include "fstream-utilities.h"
 #include "other-functions.h"
 #include "system-access.h"
+#include "validation.h"
 
 
 std::string generateSalt(std::string salt) {
@@ -121,20 +122,16 @@ void editUserData(std::vector<AccountProperties>& accounts) {
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
     std::cout << WHAT_CHANGE << std::endl;
-    std::cout << "1) " << LOGIN << std::endl;
-    std::cout << "2) " << PASSWORD << std::endl;
-    std::cout << "3) " << ROLE << std::endl;
+    std::cout << "1) " << PASSWORD << std::endl;
+    std::cout << "2) " << ROLE << std::endl;
 
     int choice = getch() - '0';
 
     switch (choice) {
         case 1:
-            editUserLogin(accounts[p]);
-            break;
-        case 2:
             editUserPassword(accounts[p]);
             break;
-        case 3:
+        case 2:
             editUserRole(accounts[p]);
             break;
     }
@@ -147,16 +144,6 @@ int getAccountPositionByLogin(std::string login, const std::vector<AccountProper
         }
     }
     return -1;
-}
-
-void editUserLogin(AccountProperties& account) {
-    std::cout << LOGIN_INPUT_MESSAGE;
-    fflush(stdout);
-    std::string login = inputLogin();
-    account.login = login;
-
-    std::cout << SUCCESSFUL_LOGIN_CHANGE << std::endl;
-    system("pause");
 }
 
 void editUserPassword(AccountProperties& account) {
@@ -183,12 +170,27 @@ void editUserRole(AccountProperties& account) {
     system("pause");
 }
 
-void deleteUserData(std::vector<AccountProperties>& accounts) {
-    system("cls");
-    showListOfUsers(accounts);
-
-    std::cout << INPUT_USER_LOGIN;
-    fflush(stdout);
+void deleteUserData(const AccountProperties& account, std::vector<AccountProperties>& accounts) {
+    std::string login;
+    while (true) {
+        system("cls");
+        showListOfUsers(accounts);
+        std::cout << INPUT_USER_LOGIN;
+        fflush(stdout);
+        login = inputLogin();
+        if (!isAccountExist(login, accounts)) {
+            std::cout << LOGIN_DOESNT_EXIST << std::endl;
+        } else if (!isValidLogin(login)) {
+            std::cout << INCORRECT_LOGIN << std::endl;
+        } else if (account.login == login) {
+            std::cout << CANT_DELETE_YOURSELF << std::endl;
+        } else {
+            break;
+        }
+        if (!isTryAgain()) {
+            return;
+        }
+    }
 
     int p = getAccountPositionByLogin(inputLogin(), accounts);
 
@@ -215,7 +217,7 @@ void approveAccounts(std::vector<AccountProperties>& accounts) {
         std::cout << "4) " << UNAPPROVE_ALL_ACCOUNTS << std::endl;
         std::cout << "5) " << BACK_MESSAGE << std::endl;
 
-        int choice = getch();
+        int choice = getch() - '0';
 
         switch (choice) {
             case 1:

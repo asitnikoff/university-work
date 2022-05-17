@@ -58,13 +58,23 @@ void logInSystem(std::vector<AccountProperties>& accounts) {
 void showAdminUserModule(AccountProperties& account, std::vector<AccountProperties>& accounts) {
     while (true) {
         system("cls");
-        showAccountWelcomeMessage(user.login);
+        showAccountWelcomeMessage(account.login);
         std::cout << "1) " << USE_ADMIN_PANEL_MESSAGE << std::endl;
         std::cout << "2) " << USE_COMMON_USER_PANEL_MESSAGE << std::endl;
-        std::cout << "3) " << LOG_OUT_MESSAGE << std::endl;
+        std::cout << "3) " << LOG_OUT_MESSAGE << std::endl << std::endl;
+
+        std::cout << DANGER_ZONE << std::endl;
+        std::cout << "0) " << DELETE_ACCOUNT << std::endl;
+
         int choice = getch() - '0';
 
         switch (choice) {
+            case 0:
+                deleteYourAccount(account, accounts);
+                if (!isLoginExist(account.login, accounts)) {
+                    return;
+                }
+                break;
             case 1:
                 useAccountManager(account, accounts);
                 break;
@@ -143,7 +153,7 @@ void useAccountManager(AccountProperties& account, std::vector<AccountProperties
                 editUserData(accounts);
                 break;
             case 3:
-                deleteUserData(accounts);
+                deleteUserData(account, accounts);
                 break;
             case 4:
                 approveAccounts(accounts);
@@ -179,6 +189,7 @@ void showCommonUserModule(AccountProperties& account, std::vector<AccountPropert
                 if (!isLoginExist(account.login, accounts)) {
                     return;
                 }
+                break;
             case 1:
                 useProductManager();
                 break;

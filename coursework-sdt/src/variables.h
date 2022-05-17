@@ -80,7 +80,7 @@
 #define SUCCESSFUL_ROLE_CHANGE "Роль пользователя была успешно изменена."
 #define SUCCESSFUL_ACCOUNT_DELETE "Пользователь был успешно удалён."
 #define SUCCESSFUL_ACCOUNT_BLOCK "Пользователь был успешно заблокирован."
-#define SUCCESSFUL_ACCOUNT_UNBLOCK "Пользователь был успешно удалён."
+#define SUCCESSFUL_ACCOUNT_UNBLOCK "Пользователь был успешно разблокирован."
 #define SUCCESSFUL_ACCOUNT_UNAPPROVE "Аккаунт пользователя не подтверждён."
 #define SUCCESSFUL_ACCOUNT_APPROVE "Аккаунт пользователя подтвёрждён."
 #define SUCCESSFUL_ALL_ACCOUNTS_APPROVE "Все аккаунты подтверждены."
@@ -90,6 +90,9 @@
 #define ARE_YOU_SURE_TO_DELETE "Вы уверены, что хотите удалить свой аккаунт?"
 #define YES "Да."
 #define NO "Нет."
+#define INCORRECT_LOGIN "Логин не соответствует шаблону."
+#define CANT_DELETE_YOURSELF "Нельзя удалить свой аккаунт через модуль управлениями учётными записями."
+#define LOGIN_DOESNT_EXIST "Такого пользователя не существует."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
