@@ -13,6 +13,7 @@ void sortProductsByShopNumber(std::vector<ProductProperties>&);
 void sortProductsByProductName(std::vector<ProductProperties>&);
 void sortProductsByProductAmount(std::vector<ProductProperties>&);
 void sortProductsByResponsibleName(std::vector<ProductProperties>&);
+void useProductSorts(std::vector<ProductProperties>&);
 
 
 #endif

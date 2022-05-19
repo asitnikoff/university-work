@@ -32,6 +32,7 @@ bool isConfirmChanges(std::string message) {
 }
 
 void showMessage(std::string message) {
+    system("cls");
     std::cout << message << std::endl;
     system("pause");
 }

@@ -180,6 +180,7 @@ void useAccountManager(AccountProperties& account, std::vector<AccountProperties
 void showCommonUserModule(AccountProperties& account, std::vector<AccountProperties>& accounts) {
     while (true) {
         system("cls");
+        showAccountWelcomeMessage(account.login);
         std::cout << "1) " << OPEN_DATA_MANAGER << std::endl;
         std::cout << "2) " << CHANGE_PASSWORD << std::endl;
         std::cout << "3) " << LOG_OUT_MESSAGE << std::endl << std::endl;

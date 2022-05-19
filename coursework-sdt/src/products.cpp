@@ -18,6 +18,28 @@ void useCommonUserProductManager() {
         system("cls");
         showListOfProducts(products);
 
+        std::cout << "1) " << SORT << std::endl;
+        std::cout << "2) " << SEARCH << std::endl;
+        std::cout << "3) " << SHOW_LIST_OF_RELEASED_PRODUCTS << std::endl;
+        std::cout << "4) " << BACK_MESSAGE << std::endl;
+
+        int choice = getch() - '0';
+
+        switch (choice) {
+            case 1:
+                useProductSorts(products);
+                break;
+            case 2:
+//                useSearch(products);
+                break;
+            case 3:
+                showListOfReleasedProducts(products);
+                break;
+            case 4:
+                writeProducts(products);
+                return;
+        }
+        /*
         std::cout << "1) " << SORT_BY_DATE << std::endl;
         std::cout << "2) " << SORT_BY_SHOP_NUMBER << std::endl;
         std::cout << "3) " << SORT_BY_PRODUCT_NAME << std::endl;
@@ -57,6 +79,7 @@ void useCommonUserProductManager() {
             default:
                 return;
         }
+        */
     }
 }
 

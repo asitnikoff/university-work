@@ -111,6 +111,8 @@
 #define WAS_SORTED_BY_PRODUCT_AMOUNT "Продукты были отсортированы по возрастанию их количества."
 #define WAS_SORTED_BY_RESPONSIBLE_NAME "Продукты были отсортированы по возрастанию имени ответственного."
 #define NO_RELEASE_PRODUCTS_SUCH_REQUIRMENTS "Нет продуктов, удовлетворяющих данным требованиям."
+#define SORT "Сортировка."
+#define SEARCH "Поиск."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
