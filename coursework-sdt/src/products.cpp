@@ -9,6 +9,7 @@
 #include "variables.h"
 #include "sorts.h"
 #include "other-functions.h"
+#include "searches.h"
 
 void useCommonUserProductManager() {
     std::vector<ProductProperties> products;
@@ -30,7 +31,7 @@ void useCommonUserProductManager() {
                 useProductSorts(products);
                 break;
             case 2:
-//                useSearch(products);
+                useSearch(products);
                 break;
             case 3:
                 showListOfReleasedProducts(products);

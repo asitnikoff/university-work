@@ -113,6 +113,12 @@
 #define NO_RELEASE_PRODUCTS_SUCH_REQUIRMENTS "Нет продуктов, удовлетворяющих данным требованиям."
 #define SORT "Сортировка."
 #define SEARCH "Поиск."
+#define SEARCH_BY_DATE "Поиск по дате."
+#define SEARCH_BY_SHOP_NUMBER "Поиск по номеру цеха."
+#define SEARCH_BY_PRODUCT_NAME "Поиск по имени продукта."
+#define SEARCH_BY_RESPONSIBLE_NAME "Поиск по имени ответственного за продукт."
+#define SEARCH_RESULT "Результаты поиска:"
+#define NOTHING_FOUND "Ничего не найдено."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

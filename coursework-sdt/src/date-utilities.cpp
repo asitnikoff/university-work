@@ -1,5 +1,6 @@
 #include "date-utilities.h"
 
+#include <iostream>
 
 DateProperties parseDate(std::string date_str) {
     DateProperties ret_date;
@@ -20,4 +21,17 @@ bool isLessOrEqual(const DateProperties &left_date, const DateProperties &right_
         return left_date.month <= right_date.month;
     }
     return left_date.day <= right_date.day;
+}
+
+DateProperties inputDate() {
+    std::string date_str;
+    std::cin >> date_str;
+
+    return parseDate(date_str);
+}
+
+bool isEqualsDate(const DateProperties &left_date, const DateProperties &right_date) {
+    return (left_date.day == right_date.day) &&
+           (left_date.month == right_date.month) &&
+           (left_date.year == right_date.year);
 }

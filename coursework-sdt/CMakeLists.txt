@@ -10,6 +10,7 @@ set(PROJECT_SOURCES
         src/main.cpp
         src/modules.cpp
         src/other-functions.cpp
+        src/searches.cpp
         src/sha256.cpp
         src/sorts.cpp
         src/system-access.cpp
@@ -24,6 +25,7 @@ set(PROJECT_HEADERS
         src/fstream-utilities.h
         src/modules.h
         src/other-functions.h
+        src/searches.h
         src/sha256.h
         src/sorts.h
         src/system-access.h
