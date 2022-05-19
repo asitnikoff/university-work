@@ -125,7 +125,12 @@ void showListOfReleasedProducts(const std::vector<ProductProperties>& products) 
         }
     }
 
-    showListOfProducts(released_products);
+    if (released_products.empty()) {
+        std::cout << NO_RELEASE_PRODUCTS_SUCH_REQUIRMENTS << std::endl;
+    } else {
+        showListOfProducts(released_products);
+    }
+    system("pause");
 }
 
 void addProduct(std::vector<ProductProperties> &products) {
