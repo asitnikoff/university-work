@@ -40,47 +40,6 @@ void useCommonUserProductManager() {
                 writeProducts(products);
                 return;
         }
-        /*
-        std::cout << "1) " << SORT_BY_DATE << std::endl;
-        std::cout << "2) " << SORT_BY_SHOP_NUMBER << std::endl;
-        std::cout << "3) " << SORT_BY_PRODUCT_NAME << std::endl;
-        std::cout << "4) " << SORT_BY_PRODUCT_AMOUNT << std::endl;
-        std::cout << "5) " << SORT_BY_RESPONSIBLE_NAME << std::endl;
-        std::cout << "6) " << SHOW_LIST_OF_RELEASED_PRODUCTS << std::endl;
-        std::cout << "7) " << BACK_MESSAGE << std::endl;
-
-        int choice = getch() - '0';
-
-        switch (choice) {
-            case 1:
-                sortProductsByDate(products);
-                showMessage(WAS_SORTED_BY_DATE);
-                break;
-            case 2:
-                sortProductsByShopNumber(products);
-                showMessage(WAS_SORTED_BY_SHOP_NUMBER);
-                break;
-            case 3:
-                sortProductsByProductName(products);
-                showMessage(WAS_SORTED_BY_PRODUCT_NAME);
-                break;
-            case 4:
-                sortProductsByProductAmount(products);
-                showMessage(WAS_SORTED_BY_PRODUCT_AMOUNT);
-                break;
-            case 5:
-                sortProductsByResponsibleName(products);
-                showMessage(WAS_SORTED_BY_RESPONSIBLE_NAME);
-                break;
-            case 6:
-                showListOfReleasedProducts(products);
-                break;
-            case 7:
-                writeProducts(products);
-            default:
-                return;
-        }
-        */
     }
 }
 
@@ -135,10 +94,8 @@ void showListOfReleasedProducts(const std::vector<ProductProperties>& products) 
     std::string shop_number;
     std::cin >> shop_number;
     std::cout << INPUT_RANGE_DATE; fflush(stdout);
-    std::string begin_date_str, end_date_str;
-    std::cin >> begin_date_str >> end_date_str;
-    DateProperties begin_date = parseDate(begin_date_str);
-    DateProperties end_date = parseDate(end_date_str);
+    DateProperties begin_date = inputDate();
+    DateProperties end_date = inputDate();
 
     std::vector<ProductProperties> released_products;
     for (auto product : products) {
@@ -160,9 +117,7 @@ void showListOfReleasedProducts(const std::vector<ProductProperties>& products) 
 void addProduct(std::vector<ProductProperties> &products) {
     ProductProperties product;
     std::cout << INPUT_DATE; fflush(stdout);
-    std::string date_str;
-    std::cin >> date_str;
-    product.date = parseDate(date_str);
+    product.date = inputDate();
     std::cout << INPUT_SHOP_NUMBER; fflush(stdout);
     std::cin >> product.shop_number;
     std::cout << INPUT_PRODUCT_NAME; fflush(stdout);
