@@ -140,4 +140,42 @@ void deleteProduct(std::vector<ProductProperties> &products) {
     products.erase(products.begin() + p - 1);
 }
 
-void useAdminProductManager() { }
+void useAdminProductManager() {
+    std::vector<ProductProperties> products;
+    readProducts(products);
+
+    while (true) {
+        system("cls");
+        showListOfProducts(products);
+
+        std::cout << "1) " << SORT << std::endl;
+        std::cout << "2) " << SEARCH << std::endl;
+        std::cout << "3) " << ADD_PRODUCT << std::endl;
+        std::cout << "4) " << DELETE_PRODUCT << std::endl;
+        std::cout << "5) " << SHOW_LIST_OF_RELEASED_PRODUCTS << std::endl;
+        std::cout << "6) " << BACK_MESSAGE << std::endl;
+
+        int choice = getch() - '0';
+
+        switch (choice) {
+            case 1:
+                useProductSorts(products);
+                break;
+            case 2:
+                useSearch(products);
+                break;
+            case 3:
+                addProduct(products);
+                break;
+            case 4:
+                deleteProduct(products);
+                break;
+            case 5:
+                showListOfReleasedProducts(products);
+                break;
+            case 6:
+                writeProducts(products);
+                return;
+        }
+    }
+}
