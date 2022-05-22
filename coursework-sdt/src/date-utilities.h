@@ -7,5 +7,6 @@ DateProperties parseDate(std::string);
 bool isLessOrEqual(const DateProperties&, const DateProperties&);
 DateProperties inputDate();
 bool isEqualsDate(const DateProperties&, const DateProperties&);
+void showDate(const DateProperties&);
 
 #endif

@@ -234,3 +234,27 @@ void showMainModule(std::vector<AccountProperties> &accounts) {
         }
     }
 }
+
+void editProductModule(std::vector<ProductProperties> &products) {
+    int position = -1;
+    while (true) {
+        system("cls");
+        showListOfProducts(products);
+
+        std::cout << INPUT_PRODUCT_POSITION;
+        position = readInt(1, (int)products.size());
+
+        if (position == 0) {
+            std::cout << INVALID_INPUT << std::endl;
+            std::cout << NUMBER_MUST_BE_IN_RANGE << "[1; " << (int)products.size() << "]." << std::endl;
+        } else {
+            break;
+        }
+
+        if (!isTryAgain()) {
+            return;
+        }
+    }
+
+    editProduct(products[position - 1]);
+}

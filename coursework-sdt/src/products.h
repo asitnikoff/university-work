@@ -24,8 +24,15 @@ void useAdminProductManager();
 void showListOfProducts(const std::vector<ProductProperties>&);
 void addProduct(std::vector<ProductProperties>&);
 void deleteProduct(std::vector<ProductProperties>&);
+void editProduct(ProductProperties&);
 void showListOfReleasedProducts(const std::vector<ProductProperties>&);
 void readProducts(std::vector<ProductProperties>&);
 void writeProducts(const std::vector<ProductProperties>&);
+void showProductData(const ProductProperties&);
+void editProductDate(ProductProperties&);
+void editProductShopNumber(ProductProperties&);
+void editProductProductName(ProductProperties&);
+void editProductProductAmount(ProductProperties&);
+void editProductResponsibleName(ProductProperties&);
 
 #endif

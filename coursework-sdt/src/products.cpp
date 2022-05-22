@@ -10,6 +10,8 @@
 #include "sorts.h"
 #include "other-functions.h"
 #include "searches.h"
+#include "validation.h"
+#include "modules.h"
 
 void useCommonUserProductManager() {
     std::vector<ProductProperties> products;
@@ -122,22 +124,36 @@ void addProduct(std::vector<ProductProperties> &products) {
     std::cin >> product.shop_number;
     std::cout << INPUT_PRODUCT_NAME; fflush(stdout);
     std::cin >> product.product_name;
-    std::cout << INPUT_PRODUCT_AMOUTN; fflush(stdout);
+    std::cout << INPUT_PRODUCT_AMOUNT; fflush(stdout);
     std::cin >> product.product_amount;
-    std::cout << INPUT_RESPONSIBLE_NAME; fflush(stdout);
+    std::cout << INPUT_PRODUCT_RESPONSIBLE_NAME; fflush(stdout);
     std::cin >> product.responsible_name;
 
     products.push_back(product);
 }
 
 void deleteProduct(std::vector<ProductProperties> &products) {
-    showListOfProducts(products);
+    int position = -1;
+    while (true) {
+        system("cls");
+        showListOfProducts(products);
 
-    std::cout << INPUT_PRODUCT_NUMBER; fflush(stdout);
-    int p;
-    std::cin >> p;
+        std::cout << INPUT_PRODUCT_POSITION;
+        position = readInt(1, (int)products.size());
 
-    products.erase(products.begin() + p - 1);
+        if (position == 0) {
+            std::cout << INVALID_INPUT << std::endl;
+            std::cout << NUMBER_MUST_BE_IN_RANGE << " [1; " << (int)products.size() << "]." << std::endl;
+        } else {
+            break;
+        }
+
+        if (!isTryAgain()) {
+            return;
+        }
+    }
+
+    products.erase(products.begin() + position - 1);
 }
 
 void useAdminProductManager() {
@@ -152,8 +168,9 @@ void useAdminProductManager() {
         std::cout << "2) " << SEARCH << std::endl;
         std::cout << "3) " << ADD_PRODUCT << std::endl;
         std::cout << "4) " << DELETE_PRODUCT << std::endl;
-        std::cout << "5) " << SHOW_LIST_OF_RELEASED_PRODUCTS << std::endl;
-        std::cout << "6) " << BACK_MESSAGE << std::endl;
+        std::cout << "5) " << EDIT_PRODUCT << std::endl;
+        std::cout << "6) " << SHOW_LIST_OF_RELEASED_PRODUCTS << std::endl;
+        std::cout << "7) " << BACK_MESSAGE << std::endl;
 
         int choice = getch() - '0';
 
@@ -171,11 +188,105 @@ void useAdminProductManager() {
                 deleteProduct(products);
                 break;
             case 5:
-                showListOfReleasedProducts(products);
+                editProductModule(products);
                 break;
             case 6:
+                showListOfReleasedProducts(products);
+                break;
+            case 7:
                 writeProducts(products);
                 return;
         }
     }
+}
+
+void editProduct(ProductProperties& product) {
+    while (true) {
+        system("cls");
+        showProductData(product);
+        std::cout << "0) " << BACK_MESSAGE << std::endl;
+
+        int choice = getch() - '0';
+
+        switch (choice) {
+            case 0:
+                return;
+                break;
+            case 1:
+                editProductDate(product);
+                break;
+            case 2:
+                editProductShopNumber(product);
+                break;
+            case 3:
+                editProductProductName(product);
+                break;
+            case 4:
+                editProductProductAmount(product);
+                break;
+            case 5:
+                editProductResponsibleName(product);
+                break;
+        }
+    }
+}
+
+void showProductData(const ProductProperties &product) {
+    std::cout << "1) [Дата]: ";
+    showDate(product.date);
+    std::cout << "2) [Номер цеха]: " << product.shop_number << std::endl;
+    std::cout << "3) [Название продукта]: " << product.product_name << std::endl;
+    std::cout << "4) [Количество продукта]: " << product.product_amount << std::endl;
+    std::cout << "5) [Имя ответственного]: " << product.responsible_name << std::endl;
+}
+
+void editProductDate(ProductProperties &product) {
+    DateProperties date;
+    while (true) {
+        std::cout << INPUT_DATE;
+        date = inputDate();
+        if (date.day == 0) {
+            std::cout << INCORRECT_DATE_OR_FORMAT << std::endl;
+        } else {
+            break;
+        }
+
+        if (!isTryAgain()) {
+            return;
+        }
+    }
+
+    product.date = date;
+}
+
+void editProductShopNumber(ProductProperties &product) {
+    std::cout << INPUT_SHOP_NUMBER << std::endl;
+    std::string shop_number;
+    std::cin >> shop_number;
+
+    product.shop_number = shop_number;
+}
+
+void editProductProductName(ProductProperties &product) {
+    std::cout << INPUT_PRODUCT_NAME << std::endl;
+    std::string product_name;
+    std::cin >> product_name;
+
+    product.product_name = product_name;
+}
+
+void editProductProductAmount(ProductProperties &product) {
+    std::cout << INPUT_PRODUCT_AMOUNT << std::endl;
+    int product_amount;
+    std::cin >> product_amount;
+
+    product.product_amount = product_amount;
+}
+
+void editProductResponsibleName(ProductProperties &product) {
+    std::cout << INPUT_PRODUCT_RESPONSIBLE_NAME << std::endl;
+    std::string responsible_name;
+    std::cin >> responsible_name;
+
+    product.responsible_name = responsible_name;
 }

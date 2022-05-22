@@ -59,11 +59,11 @@
 #define INPUT_RANGE_DATE "Введите требуемый период времени: "
 #define ADD_PRODUCT "Добавить продукт."
 #define DELETE_PRODUCT "Удалить продукт."
-#define INPUT_DATE "Введите дату: "
+#define INPUT_DATE "Введите дату (формат DD-MM-YYYY): "
 #define INPUT_PRODUCT_NAME "Введите название продукта: "
-#define INPUT_PRODUCT_AMOUTN "Введите количество продуктов: "
-#define INPUT_RESPONSIBLE_NAME "Введите имя ответственного: "
-#define INPUT_PRODUCT_NUMBER "Введите номер продукта: "
+#define INPUT_PRODUCT_AMOUNT "Введите количество продуктов: "
+#define INPUT_PRODUCT_RESPONSIBLE_NAME "Введите имя ответственного: "
+#define INPUT_PRODUCT_POSITION "Введите номер продукта: "
 #define TRY_AGAIN "Попробовать снова? (1 - да, 2 - нет)"
 #define LOGIN_NOT_IN_REQUIREMENTS "Логин не удовлетворяет шаблону."
 #define LOGIN_NOT_UNIQUE "Такой логин уже существует. Придумайте другой."
@@ -119,6 +119,10 @@
 #define SEARCH_BY_RESPONSIBLE_NAME "Поиск по имени ответственного за продукт."
 #define SEARCH_RESULT "Результаты поиска:"
 #define NOTHING_FOUND "Ничего не найдено."
+#define EDIT_PRODUCT "Редактировать данные продукта."
+#define INVALID_INPUT "Неверный ввод!"
+#define NUMBER_MUST_BE_IN_RANGE "Вводимое число должно быть в отрезке"
+#define INCORRECT_DATE_OR_FORMAT "Неверная дата или формат."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

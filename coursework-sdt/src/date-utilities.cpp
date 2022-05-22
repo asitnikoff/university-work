@@ -35,3 +35,15 @@ bool isEqualsDate(const DateProperties &left_date, const DateProperties &right_d
            (left_date.month == right_date.month) &&
            (left_date.year == right_date.year);
 }
+
+void showDate(const DateProperties &date) {
+    if (date.day < 10) {
+        std::cout << "0";
+    }
+    std::cout << date.day << "-";
+    if (date.month < 10) {
+        std::cout << "0";
+    }
+    std::cout << date.month << "-";
+    std::cout << date.year << std::endl;
+}

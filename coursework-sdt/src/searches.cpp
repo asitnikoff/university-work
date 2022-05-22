@@ -86,7 +86,7 @@ std::vector<ProductProperties> findProductsByProductName(const std::vector<Produ
 
     std::vector<ProductProperties> ret_vector;
 
-    std::cout << INPUT_PRODUCT_NUMBER; fflush(stdout);
+    std::cout << INPUT_PRODUCT_NAME; fflush(stdout);
     std::string product_name;
     std::cin >> product_name;
 
@@ -103,7 +103,7 @@ std::vector<ProductProperties> findProductsByResponsibleName(const std::vector<P
 
     std::vector<ProductProperties> ret_vector;
 
-    std::cout << INPUT_RESPONSIBLE_NAME; fflush(stdout);
+    std::cout << INPUT_PRODUCT_RESPONSIBLE_NAME; fflush(stdout);
     std::string responsible_name;
     std::cin >> responsible_name;
 
