@@ -1,4 +1,6 @@
 #include "date-utilities.h"
+#include "variables.h"
+#include "validation.h"
 
 #include <iostream>
 
@@ -24,10 +26,24 @@ bool isLessOrEqual(const DateProperties &left_date, const DateProperties &right_
 }
 
 DateProperties inputDate() {
-    std::string date_str;
-    std::cin >> date_str;
+    DateProperties date;
+    while (true) {
+        std::cout << INPUT_DATE;
+        std::string date_str;
+        std::cin >> date_str;
+        date = parseDate(date_str);
+        if (date.day == 0) {
+            std::cout << INCORRECT_DATE_OR_FORMAT << std::endl;
+        } else {
+            break;
+        }
 
-    return parseDate(date_str);
+        if (!isTryAgain()) {
+            return date;
+        }
+    }
+
+    return date;
 }
 
 bool isEqualsDate(const DateProperties &left_date, const DateProperties &right_date) {

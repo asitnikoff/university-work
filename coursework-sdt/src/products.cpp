@@ -118,8 +118,19 @@ void showListOfReleasedProducts(const std::vector<ProductProperties>& products) 
 
 void addProduct(std::vector<ProductProperties> &products) {
     ProductProperties product;
-    std::cout << INPUT_DATE; fflush(stdout);
-    product.date = inputDate();
+    while (true) {
+        std::cout << INPUT_DATE;
+        product.date = inputDate();
+        if (date.day == 0) {
+            std::cout << INCORRECT_DATE_OR_FORMAT << std::endl;
+        } else {
+            break;
+        }
+
+        if (!isTryAgain()) {
+            return;
+        }
+    }
     std::cout << INPUT_SHOP_NUMBER; fflush(stdout);
     std::cin >> product.shop_number;
     std::cout << INPUT_PRODUCT_NAME; fflush(stdout);
@@ -240,19 +251,9 @@ void showProductData(const ProductProperties &product) {
 }
 
 void editProductDate(ProductProperties &product) {
-    DateProperties date;
-    while (true) {
-        std::cout << INPUT_DATE;
-        date = inputDate();
-        if (date.day == 0) {
-            std::cout << INCORRECT_DATE_OR_FORMAT << std::endl;
-        } else {
-            break;
-        }
-
-        if (!isTryAgain()) {
-            return;
-        }
+    DateProperties date = inputDate();
+    if (date.day == 0) {
+        return;
     }
 
     product.date = date;
