@@ -82,7 +82,6 @@ void showAdminUserModule(AccountProperties& account, std::vector<AccountProperti
                 useAdminProductManager();
                 break;
             case 3:
-            default:
                 return;
         }
     }
@@ -171,7 +170,6 @@ void useAccountManager(AccountProperties& account, std::vector<AccountProperties
                 unblockAccounts(accounts);
                 break;
             case 7:
-            default:
                 return;
         }
     }
@@ -204,7 +202,6 @@ void showCommonUserModule(AccountProperties& account, std::vector<AccountPropert
                 editUserPassword(account);
                 break;
             case 3:
-            default:
                 return;
         }
     }
@@ -229,7 +226,6 @@ void showMainModule(std::vector<AccountProperties> &accounts) {
                 registerUserPage(accounts, false);
                 break;
             case 3:
-            default:
                 return;
         }
     }

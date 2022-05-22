@@ -244,7 +244,6 @@ void approveAccounts(std::vector<AccountProperties>& accounts) {
                 unapproveAllAccounts(accounts);
                 break;
             case 5:
-            default:
                 return;
         }
     }

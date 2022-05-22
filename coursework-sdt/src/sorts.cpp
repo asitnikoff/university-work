@@ -86,7 +86,6 @@ void useProductSorts(std::vector<ProductProperties> &products) {
                 break;
             case 6:
                 writeProducts(products);
-            default:
                 return;
         }
     }
