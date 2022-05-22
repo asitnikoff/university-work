@@ -211,7 +211,6 @@ void editProduct(ProductProperties& product) {
         switch (choice) {
             case 0:
                 return;
-                break;
             case 1:
                 editProductDate(product);
                 break;
