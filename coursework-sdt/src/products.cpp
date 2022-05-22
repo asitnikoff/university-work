@@ -118,19 +118,7 @@ void showListOfReleasedProducts(const std::vector<ProductProperties>& products) 
 
 void addProduct(std::vector<ProductProperties> &products) {
     ProductProperties product;
-    while (true) {
-        std::cout << INPUT_DATE;
-        product.date = inputDate();
-        if (date.day == 0) {
-            std::cout << INCORRECT_DATE_OR_FORMAT << std::endl;
-        } else {
-            break;
-        }
-
-        if (!isTryAgain()) {
-            return;
-        }
-    }
+    product.date = inputDate();
     std::cout << INPUT_SHOP_NUMBER; fflush(stdout);
     std::cin >> product.shop_number;
     std::cout << INPUT_PRODUCT_NAME; fflush(stdout);
@@ -141,6 +129,9 @@ void addProduct(std::vector<ProductProperties> &products) {
     std::cin >> product.responsible_name;
 
     products.push_back(product);
+
+    std::cout << PRODUCT_WAS_ADDED;
+    system("pause");
 }
 
 void deleteProduct(std::vector<ProductProperties> &products) {
@@ -165,6 +156,9 @@ void deleteProduct(std::vector<ProductProperties> &products) {
     }
 
     products.erase(products.begin() + position - 1);
+
+    std::cout << PRODUCT_WAS_DELETED;
+    system("pause");
 }
 
 void useAdminProductManager() {

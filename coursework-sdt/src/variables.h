@@ -123,6 +123,8 @@
 #define INVALID_INPUT "Неверный ввод!"
 #define NUMBER_MUST_BE_IN_RANGE "Вводимое число должно быть в отрезке"
 #define INCORRECT_DATE_OR_FORMAT "Неверная дата или формат."
+#define PRODUCT_WAS_ADDED "Продукт был успешно добавлен."
+#define PRODUCT_WAS_DELETED "Продукты был успешно удалён."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
