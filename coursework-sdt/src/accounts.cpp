@@ -3,6 +3,7 @@
 #include <fstream>
 #include <random>
 #include <conio.h>
+#include <iomanip>
 
 #include "accounts.h"
 #include "sha256.h"
@@ -92,6 +93,7 @@ void addAccount(const AccountProperties& user, std::vector<AccountProperties>& a
 }
 
 void showListOfUsers(const std::vector<AccountProperties>& accounts) {
+    /*
     for (const auto &user : accounts) {
         std::cout << "login: [" << user.login << "]\n";
         std::cout << "salt: [" << user.salt << "]\n";
@@ -101,6 +103,29 @@ void showListOfUsers(const std::vector<AccountProperties>& accounts) {
         std::cout << "approved: [" << (user.isApproved ? "true" : "false") << "]\n\n";
     }
     std::cout << std::endl;
+    */
+
+    std::cout << "| Позиция |      Логин      |         Пароль         |      Роль      |     Доступ     | Подтверждён |" << std::endl;
+    for (int i = 0; i < 102; ++i) {
+        std::cout << "-";
+    }
+    std::cout << std::endl;
+    int cnt = 0;
+    for (const auto &user : accounts) {
+        ++cnt;
+        std::cout << "|";
+        std::cout << cnt << std::setw(9) << "|";
+        std::cout << user.login << std::setw(17 - (int)user.login.size() + 1) << "|";
+        std::cout << user.salted_hash_password.substr(0, 15) + "..." << std::setw(7) << "|";
+        std::cout << (user.isAdmin ? "Администратор" : "Пользователь") << std::setw(16 - (user.isAdmin ? 13 : 12) + 1) << "|";
+        std::cout << (user.isHaveAccess ? "Разрешен" : "Запрещен") << std::setw(16 - 7) << "|";
+        std::cout << (user.isApproved ? "Да" : "Нет") << std::setw(13 - (user.isApproved ? 2 : 3) + 1) << "|";
+        std::cout << std::endl;
+    }
+    for (int i = 0; i < 102; ++i) {
+        std::cout << "-";
+    }
+    std::cout << std::endl << std::endl;
 }
 
 void editUserData(std::vector<AccountProperties>& accounts) {

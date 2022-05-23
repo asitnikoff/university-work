@@ -19,7 +19,11 @@ void useCommonUserProductManager() {
 
     while (true) {
         system("cls");
-        showListOfProducts(products);
+        if (products.empty()) {
+            std::cout << LIST_OF_PRODUCTS_EMPTY << std::endl << std::endl;
+        } else {
+            showListOfProducts(products);
+        }
 
         std::cout << "1) " << SORT << std::endl;
         std::cout << "2) " << SEARCH << std::endl;
@@ -46,12 +50,36 @@ void useCommonUserProductManager() {
 }
 
 void showListOfProducts(const std::vector<ProductProperties>& products) {
+    /*
     for (const auto &product : products) {
         std::cout << "date: [" << product.date.day << "." << product.date.month << "." << product.date.year << "]\n";
         std::cout << "shop_number: [" << product.shop_number << "]\n";
         std::cout << "product_name: [" << product.product_name << "]\n";
         std::cout << "product_amount: [" << product.product_amount << "]\n";
         std::cout << "responsible_name: [" << product.responsible_name << "]\n\n";
+    }
+    std::cout << std::endl;
+    */
+
+    std::cout << "| Позиция |    Дата    |   Номер цеха   |   Название продукта   | Количество продукта |    Имя ответственного    |" << std::endl;
+    for (int i = 0; i < 114; ++i) {
+        std::cout << "-";
+    }
+    std::cout << std::endl;
+    int cnt = 0;
+    for (const auto &product : products) {
+        ++cnt;
+        std::cout << "|";
+        std::cout << cnt << std::setw(9) << "|";
+        showDate(product.date); std::cout << std::setw(3) << "|";
+        std::cout << product.shop_number << std::setw(16 - (int)product.shop_number.size() + 1) << "|";
+        std::cout << product.product_name << std::setw(23 - (int)product.product_name.size() + 1) << "|";
+        std::cout << product.product_amount << std::setw(21 - getAmountOfBits(product.product_amount) + 1) << "|";
+        std::cout << product.responsible_name << std::setw(26 - (int)product.responsible_name.size() + 1) << "|";
+        std::cout << std::endl;
+    }
+    for (int i = 0; i < 114; ++i) {
+        std::cout << "-";
     }
     std::cout << std::endl;
 }
@@ -138,7 +166,11 @@ void deleteProduct(std::vector<ProductProperties> &products) {
     int position = -1;
     while (true) {
         system("cls");
-        showListOfProducts(products);
+        if (products.empty()) {
+            std::cout << LIST_OF_PRODUCTS_EMPTY << std::endl << std::endl;
+        } else {
+            showListOfProducts(products);
+        }
 
         std::cout << INPUT_PRODUCT_POSITION;
         position = readInt(1, (int) products.size());
@@ -170,7 +202,11 @@ void useAdminProductManager() {
 
     while (true) {
         system("cls");
-        showListOfProducts(products);
+        if (products.empty()) {
+            std::cout << LIST_OF_PRODUCTS_EMPTY << std::endl << std::endl;
+        } else {
+            showListOfProducts(products);
+        }
 
         std::cout << "1) " << SORT << std::endl;
         std::cout << "2) " << SEARCH << std::endl;

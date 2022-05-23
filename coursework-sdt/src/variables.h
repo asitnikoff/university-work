@@ -126,6 +126,7 @@
 #define PRODUCT_WAS_ADDED "Продукт был успешно добавлен."
 #define PRODUCT_WAS_DELETED "Продукты был успешно удалён."
 #define WAIT_CONFIRMATION_FOR_DELETE_PRODUCT "Вы уверены, что хотите удалить этот продукт?"
+#define LIST_OF_PRODUCTS_EMPTY "Список продуктов пуст."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

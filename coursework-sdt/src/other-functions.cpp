@@ -36,3 +36,12 @@ void showMessage(std::string message) {
     std::cout << message << std::endl;
     system("pause");
 }
+
+int getAmountOfBits(int x) {
+    int ret = 0;
+    while (x > 0) {
+        ++ret;
+        x /= 10;
+    }
+    return ret;
+}

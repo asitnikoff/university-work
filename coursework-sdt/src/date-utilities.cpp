@@ -6,10 +6,10 @@
 
 DateProperties parseDate(std::string date_str) {
     DateProperties ret_date;
-    ret_date.day = atoi(date_str.substr(0, date_str.find('.')).c_str());
-    date_str.erase(0, date_str.find('.') + 1);
-    ret_date.month = atoi(date_str.substr(0, date_str.find('.')).c_str());
-    date_str.erase(0, date_str.find('.') + 1);
+    ret_date.day = atoi(date_str.substr(0, date_str.find('-')).c_str());
+    date_str.erase(0, date_str.find('-') + 1);
+    ret_date.month = atoi(date_str.substr(0, date_str.find('-')).c_str());
+    date_str.erase(0, date_str.find('-') + 1);
     ret_date.year = atoi(date_str.c_str());
 
     return ret_date;
@@ -61,5 +61,5 @@ void showDate(const DateProperties &date) {
         std::cout << "0";
     }
     std::cout << date.month << "-";
-    std::cout << date.year << std::endl;
+    std::cout << date.year;
 }
