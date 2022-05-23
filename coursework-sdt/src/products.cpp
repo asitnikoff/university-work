@@ -130,7 +130,7 @@ void addProduct(std::vector<ProductProperties> &products) {
 
     products.push_back(product);
 
-    std::cout << PRODUCT_WAS_ADDED;
+    std::cout << PRODUCT_WAS_ADDED << std::endl;
     system("pause");
 }
 
@@ -141,11 +141,11 @@ void deleteProduct(std::vector<ProductProperties> &products) {
         showListOfProducts(products);
 
         std::cout << INPUT_PRODUCT_POSITION;
-        position = readInt(1, (int)products.size());
+        position = readInt(1, (int) products.size());
 
         if (position == 0) {
             std::cout << INVALID_INPUT << std::endl;
-            std::cout << NUMBER_MUST_BE_IN_RANGE << " [1; " << (int)products.size() << "]." << std::endl;
+            std::cout << NUMBER_MUST_BE_IN_RANGE << " [1; " << (int) products.size() << "]." << std::endl;
         } else {
             break;
         }
@@ -155,10 +155,13 @@ void deleteProduct(std::vector<ProductProperties> &products) {
         }
     }
 
-    products.erase(products.begin() + position - 1);
-
-    std::cout << PRODUCT_WAS_DELETED;
-    system("pause");
+    if (isConfirmChanges(WAIT_CONFIRMATION_FOR_DELETE_PRODUCT)) {
+        products.erase(products.begin() + position - 1);
+        std::cout << PRODUCT_WAS_DELETED << std::endl;
+        system("pause");
+    } else {
+        return;
+    }
 }
 
 void useAdminProductManager() {

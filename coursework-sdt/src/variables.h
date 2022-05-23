@@ -18,8 +18,8 @@
 #define BLOCK_MESSAGE "Ваша учётная запись была заблокирована администратором."
 #define LOG_OUT_MESSAGE "Выйти из аккаунта."
 #define CLOSE_SYSTEM_MESSAGE "Завершить работу программы."
-#define USE_ADMIN_PANEL_MESSAGE "Панель управления учётными записями."
-#define USE_COMMON_USER_PANEL_MESSAGE "Панель управления данными."
+#define USE_ADMIN_PANEL_MESSAGE "Раздел управления учётными записями."
+#define USE_COMMON_USER_PANEL_MESSAGE "Раздел управления данными."
 #define BACK_MESSAGE "Назад."
 #define SUCCESSFUL_ACCOUNT_REGISTRATION_MESSAGE "Аккаунт был успешно зарегистрирован. "
 #define WAIT_CONFIRMATION "Ожидайте подтверждения от администратора."
@@ -125,6 +125,7 @@
 #define INCORRECT_DATE_OR_FORMAT "Неверная дата или формат."
 #define PRODUCT_WAS_ADDED "Продукт был успешно добавлен."
 #define PRODUCT_WAS_DELETED "Продукты был успешно удалён."
+#define WAIT_CONFIRMATION_FOR_DELETE_PRODUCT "Вы уверены, что хотите удалить этот продукт?"
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
