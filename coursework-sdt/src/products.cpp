@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <conio.h>
+#include <map>
 
 #include "fstream-utilities.h"
 #include "date-utilities.h"
@@ -81,7 +82,7 @@ void showListOfProducts(const std::vector<ProductProperties>& products) {
     for (int i = 0; i < 114; ++i) {
         std::cout << "-";
     }
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
 }
 
 void readProducts(std::vector<ProductProperties>& products) {
@@ -127,34 +128,47 @@ void showListOfReleasedProducts(const std::vector<ProductProperties>& products) 
     DateProperties begin_date = inputDate();
     DateProperties end_date = inputDate();
 
-    std::vector<ProductProperties> released_products;
+    std::map<std::string, int> released_products;
     for (auto product : products) {
         if ((product.shop_number == shop_number) &&
             isLessOrEqual(begin_date, product.date) &&
             isLessOrEqual(product.date, end_date)) {
-            released_products.push_back(product);
+            released_products[product.product_name] += product.product_amount;
         }
     }
 
     if (released_products.empty()) {
         std::cout << NO_RELEASE_PRODUCTS_SUCH_REQUIRMENTS << std::endl;
     } else {
-        showListOfProducts(released_products);
+        system("cls");
+        for (auto& product : released_products) {
+            std::cout << product.first << " - " << product.second << std::endl;
+        }
     }
     system("pause");
 }
 
 void addProduct(std::vector<ProductProperties> &products) {
+    system("cls");
     ProductProperties product;
     product.date = inputDate();
     std::cout << INPUT_SHOP_NUMBER; fflush(stdout);
     std::cin >> product.shop_number;
     std::cout << INPUT_PRODUCT_NAME; fflush(stdout);
     std::cin >> product.product_name;
-    std::cout << INPUT_PRODUCT_AMOUNT; fflush(stdout);
-    std::cin >> product.product_amount;
+    while (true) {
+        std::cout << INPUT_PRODUCT_AMOUNT; fflush(stdout);
+        std::cin >> product.product_amount;
+        clearInputBuffer();
+        if (product.product_amount >= 0) {
+            break;
+        } else {
+            std::cout << PRODUCT_AMOUNT_CANT_BE_LESS_ZERO << std::endl;
+            std::cout << PLEASE_TRY_AGAIN << std::endl;
+        }
+    }
     std::cout << INPUT_PRODUCT_RESPONSIBLE_NAME; fflush(stdout);
-    std::cin >> product.responsible_name;
+    getline(std::cin, product.responsible_name);
 
     products.push_back(product);
 
@@ -277,6 +291,7 @@ void editProduct(ProductProperties& product) {
 void showProductData(const ProductProperties &product) {
     std::cout << "1) [Дата]: ";
     showDate(product.date);
+    std::cout << std::endl;
     std::cout << "2) [Номер цеха]: " << product.shop_number << std::endl;
     std::cout << "3) [Название продукта]: " << product.product_name << std::endl;
     std::cout << "4) [Количество продукта]: " << product.product_amount << std::endl;
@@ -293,7 +308,8 @@ void editProductDate(ProductProperties &product) {
 }
 
 void editProductShopNumber(ProductProperties &product) {
-    std::cout << INPUT_SHOP_NUMBER << std::endl;
+    system("cls");
+    std::cout << INPUT_SHOP_NUMBER;
     std::string shop_number;
     std::cin >> shop_number;
 
@@ -301,7 +317,8 @@ void editProductShopNumber(ProductProperties &product) {
 }
 
 void editProductProductName(ProductProperties &product) {
-    std::cout << INPUT_PRODUCT_NAME << std::endl;
+    system("cls");
+    std::cout << INPUT_PRODUCT_NAME;
     std::string product_name;
     std::cin >> product_name;
 
@@ -309,15 +326,29 @@ void editProductProductName(ProductProperties &product) {
 }
 
 void editProductProductAmount(ProductProperties &product) {
-    std::cout << INPUT_PRODUCT_AMOUNT << std::endl;
     int product_amount;
-    std::cin >> product_amount;
+    do {
+        system("cls");
+        std::cout << INPUT_PRODUCT_AMOUNT; fflush(stdout);
+        std::cin >> product_amount;
+        clearInputBuffer();
+        if (product_amount >= 0) {
+            break;
+        } else {
+            std::cout << PRODUCT_AMOUNT_CANT_BE_LESS_ZERO << std::endl;
+        }
+
+        if (!isTryAgain()) {
+            return;
+        }
+    } while (true);
 
     product.product_amount = product_amount;
 }
 
 void editProductResponsibleName(ProductProperties &product) {
-    std::cout << INPUT_PRODUCT_RESPONSIBLE_NAME << std::endl;
+    system("cls");
+    std::cout << INPUT_PRODUCT_RESPONSIBLE_NAME;
     std::string responsible_name;
     std::cin >> responsible_name;
 

@@ -24,7 +24,7 @@
 #define SUCCESSFUL_ACCOUNT_REGISTRATION_MESSAGE "Аккаунт был успешно зарегистрирован. "
 #define WAIT_CONFIRMATION "Ожидайте подтверждения от администратора."
 #define REQUIREMENTS_FOR_LOGIN "Логин должен состоять из маленьких и больших латинских символов и цифр."
-#define REQUIREMENTS_FOR_PASSWORD "Пароль состоять из маленьких и больших латинских символов и цифр."
+#define REQUIREMENTS_FOR_PASSWORD "Пароль состоять из маленьких и больших латинских символов и цифр, и должен содержать не менее 6 символов."
 #define INCORRECT_LOGIN_OR_PASSWORD_MESSAGE "Неверный логин или пароль."
 #define ADD_NEW_USER "Добавить нового пользователя."
 #define EDIT_USER "Редактировать данные пользователя."
@@ -56,12 +56,12 @@
 #define SORT_BY_RESPONSIBLE_NAME "Сортировать по имени ответственного за продукт."
 #define SHOW_LIST_OF_RELEASED_PRODUCTS "Вывести количество выпущенных изделий по каждому наименованию."
 #define INPUT_SHOP_NUMBER "Введите номер цеха: "
-#define INPUT_RANGE_DATE "Введите требуемый период времени: "
+#define INPUT_RANGE_DATE "Введите требуемый период времени\n"
 #define ADD_PRODUCT "Добавить продукт."
 #define DELETE_PRODUCT "Удалить продукт."
 #define INPUT_DATE "Введите дату (формат DD-MM-YYYY): "
 #define INPUT_PRODUCT_NAME "Введите название продукта: "
-#define INPUT_PRODUCT_AMOUNT "Введите количество продуктов: "
+#define INPUT_PRODUCT_AMOUNT "Введите количество продукта: "
 #define INPUT_PRODUCT_RESPONSIBLE_NAME "Введите имя ответственного: "
 #define INPUT_PRODUCT_POSITION "Введите номер продукта: "
 #define TRY_AGAIN "Попробовать снова? (1 - да, 2 - нет)"
@@ -127,6 +127,8 @@
 #define PRODUCT_WAS_DELETED "Продукты был успешно удалён."
 #define WAIT_CONFIRMATION_FOR_DELETE_PRODUCT "Вы уверены, что хотите удалить этот продукт?"
 #define LIST_OF_PRODUCTS_EMPTY "Список продуктов пуст."
+#define PRODUCT_AMOUNT_CANT_BE_LESS_ZERO "Количество продуктов не может быть меньше 0."
+#define PLEASE_TRY_AGAIN "Пожалуйста, попробуйте ещё раз."
 
 
 const std::string SALT_TEMPLATE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

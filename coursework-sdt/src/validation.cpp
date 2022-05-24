@@ -40,7 +40,7 @@ bool isValidPassword(const std::string& password) {
             return false;
         }
     }
-    return !password.empty();
+    return ((int)password.size() >= 6);
 }
 
 bool isTryAgain() {
