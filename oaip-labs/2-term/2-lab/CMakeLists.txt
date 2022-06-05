@@ -3,4 +3,11 @@ project(2_lab)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(2_lab main.cpp)
+set(SOURCE_FILES
+        main.cpp
+        stack.cpp)
+
+set(HEADER_FILES
+        stack.h)
+
+add_executable(2_lab ${SOURCE_FILES} ${HEADER_FILES})
