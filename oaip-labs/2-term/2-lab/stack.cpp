@@ -1,44 +1,98 @@
+#include <iostream>
+
 #include "stack.h"
 
 
-template <typename T>
-Stack<T>::Stack() {
-    head_ = nullptr;
-}
-
-template <typename T>
-Stack<T>::~Stack() {
-    clear();
-}
-
-template <typename T>
-void Stack<T>::push(T value) {
-    auto *tmp = new StackProperties<T>();
+void pushStack(StackProperties*& stack,int value) {
+    auto *tmp = new StackProperties();
     tmp->info = value;
-    tmp->next = head_;
-    head_ = tmp;
+    tmp->next = stack;
+    stack = tmp;
 }
 
-template <typename T>
-void Stack<T>::pop() {
-    StackProperties<T> *tmp = head_;
-    head_ = head_->next;
-    delete *tmp;
+void popStack(StackProperties*& stack) {
+    StackProperties *tmp = stack;
+    stack = stack->next;
+    tmp->next = nullptr;
+    delete tmp;
 }
 
-template <typename T>
-T Stack<T>::top() {
-    return head_->info;
+int topStack(const StackProperties*& stack) {
+    return stack->info;
 }
 
-template <typename T>
-bool Stack<T>::empty() {
-    return (head_ == nullptr);
+bool isEmptyStack(StackProperties*& stack) {
+    return (stack == nullptr);
 }
 
-template <typename T>
-void Stack<T>::clear() {
-    while (head_ != nullptr) {
-        pop();
+void clearStack(StackProperties*& stack) {
+    while (stack != nullptr) {
+        popStack(stack);
     }
+}
+
+void showStack(StackProperties*& stack) {
+    std::cout << "Stack elements:";
+    fflush(stdout);
+
+    StackProperties *tmp = stack;
+    while (tmp != nullptr) {
+        std::cout << " [" << tmp->info << "]";
+        tmp = tmp->next;
+    }
+    std::cout << std::endl;
+}
+
+
+StackProperties* getMinElementStack(StackProperties* stack) {
+    StackProperties *ret = stack;
+    stack = stack->next;
+
+    while (stack != nullptr) {
+        if (stack->info < ret->info) {
+            ret = stack;
+        }
+        stack = stack->next;
+    }
+
+    return ret;
+}
+
+
+StackProperties* getMaxElementStack(StackProperties* stack) {
+    StackProperties *ret = stack;
+    stack = stack->next;
+
+    while (stack != nullptr) {
+        if (stack->info > ret->info) {
+            ret = stack;
+        }
+        stack = stack->next;
+    }
+
+    return ret;
+}
+
+
+bool isEarlyStack(StackProperties* first_element, StackProperties* second_element, StackProperties* stack) {
+    while (stack != second_element) {
+        if (stack == first_element) {
+            return true;
+        }
+
+        stack = stack->next;
+    }
+    return false;
+}
+
+
+void swapElementsStack(StackProperties*& first_element, StackProperties*& second_element) {
+    StackProperties *tmp = first_element;
+    first_element = second_element;
+    second_element = tmp;
+}
+
+
+void sortStack(StackProperties*& stack) {
+    std::cout << "Sort stack." << std::endl;
 }

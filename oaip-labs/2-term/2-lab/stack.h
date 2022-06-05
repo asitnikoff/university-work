@@ -1,27 +1,24 @@
 #ifndef LAB_STACK_H
 #define LAB_STACK_H
 
-template <typename T>
+
 struct StackProperties {
-    T info;
-    StackProperties<T> *next;
+    int info;
+    StackProperties *next;
 };
 
 
-template <typename T>
-class Stack {
-private:
-    StackProperties<T> *head_;
-public:
-    Stack();
-    ~Stack();
-
-    void push(T value);
-    void pop();
-    T top();
-    bool empty();
-    void clear();
-}
+void pushStack(StackProperties*&, int);
+void popStack(StackProperties*&);
+int topStack(const StackProperties*&);
+bool isEmptyStack(StackProperties*&);
+void clearStack(StackProperties*&);
+void showStack(StackProperties*&);
+StackProperties* getMinElementStack(StackProperties*);
+StackProperties* getMaxElementStack(StackProperties*);
+bool isEarlyStack(StackProperties*, StackProperties*, StackProperties*);
+void swapElementsStack(StackProperties*&, StackProperties*&);
+void sortStack(StackProperties*&);
 
 
 #endif
