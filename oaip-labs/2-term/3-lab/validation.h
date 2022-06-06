@@ -1,8 +1,9 @@
-//
-// Created by asitnikoff on 6/6/2022.
-//
+#ifndef VALIDATION_H
+#define VALIDATION_H
 
-#ifndef INC_3_LAB_VALIDATION_H
-#define INC_3_LAB_VALIDATION_H
 
-#endif //INC_3_LAB_VALIDATION_H
+int readInt(int, int);
+bool isTryAgain();
+
+
+#endif
