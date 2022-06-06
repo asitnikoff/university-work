@@ -5,9 +5,11 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(SOURCE_FILES
         main.cpp
-        stack.cpp)
+        stack.cpp
+        validation.cpp)
 
 set(HEADER_FILES
-        stack.h)
+        stack.h
+        validation.h)
 
 add_executable(2_lab ${SOURCE_FILES} ${HEADER_FILES})
