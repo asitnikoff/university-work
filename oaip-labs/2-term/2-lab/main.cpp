@@ -113,6 +113,11 @@ void addElementsInStack(StackProperties*& stack) {
 
 
 void doTask(StackProperties*& stack) {
+    if (isEmptyStack(stack) || (stack->next == nullptr)) {
+        std::cout << "Для выполнения задания стек должен состоять минимум из 2 элементов." << std::endl;
+        return;
+    }
+
     StackProperties *stack_first_element = getMinElementStack(stack);
     StackProperties *stack_second_element = getMaxElementStack(stack);
 
