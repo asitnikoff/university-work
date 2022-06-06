@@ -3,6 +3,7 @@
 
 
 int readInt(int, int);
+bool isTryAgain();
 
 
 #endif

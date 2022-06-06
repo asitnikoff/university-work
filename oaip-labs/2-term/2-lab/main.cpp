@@ -1,6 +1,10 @@
 #include <iostream>
 
 #include "stack.h"
+#include "validation.h"
+
+
+#define INCORRECT_NUMBER_OF_ELEMENTS_IN_STACK "Неверное количество элементов в стеке."
 
 
 void addElementsInStack(StackProperties*&);
@@ -11,15 +15,15 @@ int main() {
     StackProperties *stack = nullptr;
 
     while (true) {
-        std::cout << "1 - Create new stack.\n";
-        std::cout << "2 - Add elements in stack.\n";
-        std::cout << "3 - Show stack.\n";
-        std::cout << "4 - Clear stack.\n";
-        std::cout << "5 - Sort stack.\n";
-        std::cout << "6 - Do task.\n";
-        std::cout << "Else - Exit.\n";
+        std::cout << "1 - Создать стек.\n";
+        std::cout << "2 - Добавить элементы в стек.\n";
+        std::cout << "3 - Вывести элементы стека.\n";
+        std::cout << "4 - Очистить стек.\n";
+        std::cout << "5 - Отсортировать стек.\n";
+        std::cout << "6 - Удалить элементы между минимальным и максимальным элементами.\n";
+        std::cout << "Иначе - Выйти.\n";
 
-        std::cout << "Input option: ";
+        std::cout << "Введите опцию: ";
         fflush(stdout);
 
         int choice;
@@ -28,16 +32,16 @@ int main() {
         switch (choice) {
             case 1:
                 if (!isEmptyStack(stack)) {
-                    std::cout << "Stack don't empty. Are you want to clear it now?\n";
-                    std::cout << "1 - yes.\n";
-                    std::cout << "Else - no.\n";
+                    std::cout << "Стек не пуст. Хотите очистить его сейчас?\n";
+                    std::cout << "1 - да.\n";
+                    std::cout << "Иначе - нет.\n";
                     fflush(stdout);
 
                     std::cin >> choice;
                     if (choice == 1) {
                         clearStack(stack);
                     } else {
-                        std::cout << "Before create new stack you need to empty last." << std::endl;
+                        std::cout << "Перед созданием нового стека вам необходимо очистить старый." << std::endl;
                         break;
                     }
                 }
@@ -67,13 +71,23 @@ int main() {
 
 
 void addElementsInStack(StackProperties*& stack) {
-    std::cout << "Input number of elements: ";
-    fflush(stdout);
-
     int n;
-    std::cin >> n;
+    do {
+        std::cout << "Введите количество элементов N (1 <= N <= 10000): ";
+        fflush(stdout);
 
-    std::cout << "Input elements." << std::endl;
+        n = readInt(1, 10000);
+
+        if (n == 0) {
+            std::cout << INCORRECT_NUMBER_OF_ELEMENTS_IN_STACK << std::endl;
+            if (!isTryAgain()) {
+                return;
+            }
+        }
+    } while (n == 0);
+
+    std::cout << "Введите элементы стека: ";
+    fflush(stdout);
     for (int i = 0; i < n; ++i) {
         int x;
         std::cin >> x;
