@@ -41,7 +41,7 @@ int main() {
 
                     std::cin >> choice;
                     clearInputBuffer();
-                    
+
                     if (choice == 1) {
                         clearStack(stack);
                     } else {
@@ -50,7 +50,7 @@ int main() {
                     }
                 }
 
-                addElementsInStack(stack);
+                std::cout << "Стек создан!" << std::endl;
                 break;
             case 2:
                 addElementsInStack(stack);
@@ -98,6 +98,8 @@ void addElementsInStack(StackProperties*& stack) {
         pushStack(stack, x);
     }
     clearInputBuffer();
+
+    std::cout << "Элементы добавлены в стек" << std::endl;
 }
 
 

@@ -29,6 +29,7 @@ void clearStack(StackProperties*& stack) {
     while (stack != nullptr) {
         popStack(stack);
     }
+    std::cout << "Стек очищен!" << std::endl;
 }
 
 void showStack(StackProperties*& stack) {
