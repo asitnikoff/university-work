@@ -125,6 +125,11 @@ void doTask(StackProperties*& stack) {
         swapElementsStack(stack_first_element, stack_second_element);
     }
 
+    if (stack_first_element->next == stack_second_element) {
+        std::cout << "Максимальный и минимальный элементы находятся рядом. Ничего удалять не нужно." << std::endl;
+        return;
+    }
+
     StackProperties* tmp = stack_first_element->next;
     stack_first_element->next = stack_second_element;
     while (tmp != stack_second_element) {
