@@ -14,6 +14,7 @@ void clearInputBuffer();
 
 int main() {
     StackProperties *stack = nullptr;
+    bool isCreated = false;
 
     while (true) {
         std::cout << "1 - Создать стек.\n";
@@ -30,6 +31,12 @@ int main() {
         int choice;
         std::cin >> choice;
         clearInputBuffer();
+
+        if (!isCreated && (choice >= 2) && (choice <= 6)) {
+            std::cout << "Сначала необходимо создать стек, чтобы с ним работать." << std::endl;
+            std::cout << "Для этого в главном меню необходимо выбрать опцию \"1\"." << std::endl;
+            continue;
+        }
 
         switch (choice) {
             case 1:
@@ -50,6 +57,7 @@ int main() {
                     }
                 }
 
+                isCreated = true;
                 std::cout << "Стек создан!" << std::endl;
                 break;
             case 2:
@@ -63,6 +71,7 @@ int main() {
                 break;
             case 5:
                 sortStack(stack);
+                break;
             case 6:
                 doTask(stack);
                 break;
