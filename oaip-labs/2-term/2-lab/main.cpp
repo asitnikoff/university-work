@@ -9,6 +9,7 @@
 
 void addElementsInStack(StackProperties*&);
 void doTask(StackProperties*&);
+void clearInputBuffer();
 
 
 int main() {
@@ -28,6 +29,7 @@ int main() {
 
         int choice;
         std::cin >> choice;
+        clearInputBuffer();
 
         switch (choice) {
             case 1:
@@ -38,6 +40,8 @@ int main() {
                     fflush(stdout);
 
                     std::cin >> choice;
+                    clearInputBuffer();
+                    
                     if (choice == 1) {
                         clearStack(stack);
                     } else {
@@ -93,6 +97,7 @@ void addElementsInStack(StackProperties*& stack) {
         std::cin >> x;
         pushStack(stack, x);
     }
+    clearInputBuffer();
 }
 
 
@@ -112,4 +117,10 @@ void doTask(StackProperties*& stack) {
         new_tmp->next = nullptr;
         delete new_tmp;
     }
+}
+
+
+void clearInputBuffer() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
