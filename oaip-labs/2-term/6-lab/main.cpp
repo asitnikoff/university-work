@@ -1,40 +1,64 @@
 #include <iostream>
 #include <cmath>
+#include <limits>
 
 
-double a, b, eps, h;
-
-
+template <typename Type>
+Type read();
+void clearInputBuffer();
 double fun(double);
 double getZeroOfFunction(double, double, double);
+void inputParameters(double&, double&, double&, double&);
+void findZerosOfFunction(double, double, double, double);
 
 
 int main() {
-    std::cout << "Input a: ";
-    fflush(stdout);
-    std::cin >> a;
+    double a, b, eps, h;
 
-    std::cout << "Input b: ";
-    fflush(stdout);
-    std::cin >> b;
+    while (true) {
+        std::cout << "Input new parameters - 0" << std::endl;
+        std::cout << "Find zeros of function - 1" << std::endl;
+        std::cout << "Else - exit" << std::endl;
 
-    std::cout << "Input eps: ";
-    fflush(stdout);
-    std::cin >> eps;
+        int choice;
+        std::cin >> choice;
+        clearInputBuffer();
 
-    std::cout << "Input h: ";
-    fflush(stdout);
-    std::cin >> h;
-
-    while (!((a + h) > b)) {
-        if ((fun(a) * fun(a + h)) < 0) {
-            std::cout << "zero of function: " << getZeroOfFunction(a, a + h, eps) << std::endl;
+        switch (choice) {
+            case 0:
+                inputParameters(a, b, eps, h);
+                break;
+            case 1:
+                findZerosOfFunction(a, b, eps, h);
+                break;
+            default:
+                std::cout << "Bye!" << std::endl;
+                return 0;
         }
-
-        a += h;
     }
+}
 
-    return 0;
+
+template <typename Type>
+Type read() {
+    Type x;
+    while (true) {
+        std::cin >> x;
+        if (std::cin.get() != '\n') {
+            clearInputBuffer();
+            std::cout << "Invalid input. Please, try again." << std::endl;
+        }
+        else {
+            break;
+        }
+    }
+    return x;
+}
+
+
+void clearInputBuffer() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 
@@ -43,14 +67,45 @@ double fun(double x) {
 }
 
 
-double getZeroOfFunction(double a, double b, double eps) {
-    double x0 = a, x1 = b, x2;
+double getZeroOfFunction(double x0, double x1, double eps) {
+    double x2, fun1;
     while (fabs(x0 - x1) > eps) {
-        x2 = x1 - ((x1 - x0) / (fun(x1) - fun(x0))) * fun(x1);
+        fun1 = fun(x1);
+        x2 = x1 - ((x1 - x0) / (fun1 - fun(x0))) * fun1;
 
         x0 = x1;
         x1 = x2;
     }
 
     return x1;
+}
+
+
+void inputParameters(double& a, double& b, double& eps, double& h) {
+    std::cout << "Input a: ";
+    fflush(stdout);
+    a = read<double>();
+
+    std::cout << "Input b: ";
+    fflush(stdout);
+    b = read<double>();
+
+    std::cout << "Input eps: ";
+    fflush(stdout);
+    eps = read<double>();
+
+    std::cout << "Input h: ";
+    fflush(stdout);
+    h = read<double>();
+}
+
+
+void findZerosOfFunction(double a, double b, double eps, double h) {
+    while ((a + h) <= b) {
+        if ((fun(a) * fun(a + h)) < 0) {
+            std::cout << "Zero of function: " << getZeroOfFunction(a, a + h, eps) << std::endl;
+        }
+
+        a += h;
+    }
 }
