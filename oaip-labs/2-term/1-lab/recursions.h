@@ -1,8 +1,8 @@
 #ifndef RECURSIONS_H
 #define RECURSIONS_H
 
-long long calcRecursionBinPow(int, int);
-long long calcSimplePow(int, int);
-long long calcIterativeBinPow(int, int);
+double calcRecursionBinPow(double, int);
+double calcSimplePow(double, int);
+double calcIterativeBinPow(double, int);
 
 #endif

@@ -1,6 +1,6 @@
 #include "recursions.h"
 
-long long calcRecursionBinPow(int x, int n) {
+double calcRecursionBinPow(double x, int n) {
     if (n == 0) {
         return 1;
     }
@@ -14,8 +14,8 @@ long long calcRecursionBinPow(int x, int n) {
 }
 
 
-long long calcSimplePow(int x, int n) {
-    long long result = 1;
+double calcSimplePow(double x, int n) {
+    double result = 1;
     while (n > 0) {
         result *= x;
         --n;
@@ -24,8 +24,8 @@ long long calcSimplePow(int x, int n) {
 }
 
 
-long long calcIterativeBinPow(int x, int n) {
-    long long result = 1;
+double calcIterativeBinPow(double x, int n) {
+    double result = 1;
     while (n > 0) {
         if (n & 1) {
             result *= x;
