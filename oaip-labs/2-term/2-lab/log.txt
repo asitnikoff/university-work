@@ -1,0 +1,363 @@
+commit 3bb4502dd38b2d7df25e90fcd1c27c0820a74b05
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun Jun 5 17:27:05 2022 +0300
+
+    init: start 2-lab
+
+commit ec0fadd9ed68bd1de8986e0fc22c0e1ddbc67faf
+Merge: 188bc74 39e107a
+Author: Aleksei Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun Jun 5 17:23:36 2022 +0300
+
+    Merge pull request #2 from asitnikoff/oaip-2-term-1-lab
+    
+    OAIP 2 term 1 lab
+
+commit 39e107a1d25ee5dc631d35cd6fa2f31082e6e16b
+Merge: 6988abd 188bc74
+Author: Aleksei Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun Jun 5 17:23:25 2022 +0300
+
+    Merge branch 'main' into oaip-2-term-1-lab
+
+commit 188bc74224f8d824a093b14cd926887e58b4a507
+Merge: d279072 360bd86
+Author: Aleksei Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun Jun 5 17:19:23 2022 +0300
+
+    Merge pull request #1 from asitnikoff/coursework-sdt
+    
+    Coursework SDT
+
+commit 360bd861def6254ed4ac1d865fc2e5bbdb3e2d0c
+Merge: c78de99 d279072
+Author: Aleksei Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun Jun 5 17:19:15 2022 +0300
+
+    Merge branch 'main' into coursework-sdt
+
+commit c78de9902ab92f82582fbcf29f2e49effffd1c71
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun Jun 5 17:17:59 2022 +0300
+
+    feat: update files
+
+commit 6988abd5b2050babe0f18280676806bfb5922e83
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun Jun 5 17:11:35 2022 +0300
+
+    feat: update .gitignore
+
+commit b95fb96a6f289463a35e4f8e9bdf8ad51ccc5a83
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 30 00:37:44 2022 +0300
+
+    feat: add files 1-lab
+
+commit d314551840d780cad5fb1297287ce6829178e189
+Merge: d834861 d279072
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 30 00:36:01 2022 +0300
+
+    init: start oaip-2-term-1-lab
+
+commit d83486140bb2843cb1ba0c0a3cad2896a1a1495f
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 24 10:41:12 2022 +0300
+
+    feat: add validation negative product amount
+
+commit d92a24bcfd0d5aee9bb370f48f4724777fa13dd0
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 23 10:53:25 2022 +0300
+
+    feat: add buitiful output
+
+commit f46b284a5fe7a70a97d027f56d283c15a2b6c4e7
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 23 04:06:59 2022 +0300
+
+    fix: do some fixes
+
+commit 479c13b0080186608e74fd6a51bafc6cbe6d48ba
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 23 02:13:35 2022 +0300
+
+    fix: delete default from switch
+
+commit a817802b9a738299b76b640c711956aca618d2db
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 23 01:54:25 2022 +0300
+
+    feat: add feedback
+
+commit b6ce49894ebb06d953b153a7841dcaa97b7f7ad9
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 23 01:52:16 2022 +0300
+
+    fix: some fixes
+
+commit 5f6211d37390e29b6b37c20fee0f02cb5de1223b
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 23 01:47:06 2022 +0300
+
+    fix: erase unused code
+
+commit 928ddce45c943a070699ca4fb8576cb40f000ce3
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 23 01:46:39 2022 +0300
+
+    feat: add edit product and other improvements
+
+commit 0f7ce9216a8b4133316b78a52d2258e48d748c47
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sat May 21 19:12:31 2022 +0300
+
+    feat: add admin product manager
+
+commit 3e496ba9043a299493a8c0d3ab8b3d22ad1fe557
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 20 00:59:18 2022 +0300
+
+    refactor: change input date
+
+commit 65d065eb5b31a8fcd0dcf0405b3b104cc81b1bc8
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 20 00:58:55 2022 +0300
+
+    note: forget add search files
+
+commit d3843ef54b8d1552874b9bad443cf24a261553be
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 20 00:55:14 2022 +0300
+
+    feat: add product search
+
+commit 38b902ff3ce99c88fe7796ae6e0e01e762307488
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 20 00:17:00 2022 +0300
+
+    refactor: refactor sorts function
+
+commit 700c92933d5c979e020c71fd923eec7d904f9950
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Thu May 19 12:57:25 2022 +0300
+
+    feat: add check empty released_products
+
+commit aec0e69def6d77cf1f5bcadf448cd61f78e70a64
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Wed May 18 00:24:43 2022 +0300
+
+    feat: add feedback for product sorts
+
+commit 489150d557f6915c0eedf6da9db7deb7600a2fba
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 23:24:04 2022 +0300
+
+    fix: add check for empty password
+
+commit 6ebdc3d2d01c58fb5327dd549a834e8f7ce9d60d
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 20:34:05 2022 +0300
+
+    feat: add confirmation for delete, block and unblock functions
+
+commit 2c92611bdcb908879edcdebd9cded5bd9ecb21e3
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 14:54:53 2022 +0300
+
+    feat: add some improvements
+
+commit 4c1427f6f8b9a469582a0cffcb3763ee956ab329
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 14:23:49 2022 +0300
+
+    feat: add some improvements
+
+commit 0a4ab1ad53a7509052b61ca481bc144602b7aac6
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 13:38:06 2022 +0300
+
+    feat: add password confirmation
+
+commit 768716f2523136b18569064140e9cb36951669de
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 13:27:40 2022 +0300
+
+    refactor: refactor delete user function
+
+commit 7a97a851b7797d612b03daa154bd964baedbf5a7
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 12:01:38 2022 +0300
+
+    refactor: refactor block accounts
+
+commit 4cc965829f667692ab6d60d753d7fce6f05c8728
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 11:12:12 2022 +0300
+
+    add ban for block yourself in admin account manager
+
+commit 030249ce6506fd90422078a3e4809e0c4b35f12e
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 09:49:08 2022 +0300
+
+    feat: add ban for delete yourself in admin account manager
+
+commit 596ad8f63286784a03b333e9e84611366bb1235f
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 17 09:25:17 2022 +0300
+
+    fix: feedback from user register
+
+commit 0366c303f4039ae9de791f87f7de7a0bcab6ae14
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 16 23:47:48 2022 +0300
+
+    feat: add check for empty login
+
+commit 1ff229a568b3d62ac748c904bc9bced2d0ff4e44
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 16 23:46:32 2022 +0300
+
+    refactor: refactor registerUserPage
+
+commit 3df2ef1f7fee1c1f2c668c8feff9a74516fbf48f
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Mon May 16 20:04:11 2022 +0300
+
+    feat: add delete yourself account
+
+commit 392e1eeea77abae608c838fcb953a3cda3ec71d8
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun May 15 20:55:07 2022 +0300
+
+    fix: delete unnecessary action
+
+commit 48c8b452f2f37b62bdbca85e03736fc51d13d0cb
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun May 15 20:54:40 2022 +0300
+
+    feat: add feedback about account operations
+
+commit 22b6e1546b57871de37e67f29335df857dbabd2c
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun May 15 20:20:07 2022 +0300
+
+    fix: incorrect comparator
+
+commit ad9e9b32e7211b3a0224de2d7b9c2eb6dd9c7037
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Sun May 15 20:19:50 2022 +0300
+
+    fix: bug with read data in file
+
+commit 4dd853f7277b189d46bc16e7da9f25e60e116c73
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 13 23:25:20 2022 +0300
+
+    feat: add improvements
+
+commit 6b7170f55ab626953f9f02b7d3273a38b98d5579
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 13 17:34:34 2022 +0300
+
+    bugfix
+
+commit a3bfc7e5011004aa2669d6bee07416a7a70be447
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 13 17:04:01 2022 +0300
+
+    feat: add account welcome message
+
+commit a226bfdbeb4682b09c2d1073e5ace3b98fb232a3
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 13 16:58:06 2022 +0300
+
+    refactor: change get option algorithm
+
+commit a038b64e70acd484412c4a342e8a2e9a0e000053
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 13 16:45:33 2022 +0300
+
+    feat: add welcome message
+
+commit ccc7866fb30e5344cafe1533431d1f8c2d68e850
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 13 16:15:56 2022 +0300
+
+    feat: add register validation
+
+commit 8bbe6917cee73ebf0a954de9c28612edce886957
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Fri May 13 15:59:31 2022 +0300
+
+    feat: add product manager
+
+commit 92fbfbc60f07d2f28a70c89dadee7abe2294cdea
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Thu May 12 09:30:29 2022 +0300
+
+    feat: add user unblock function for admin
+
+commit 0251df46c3ee5acf7262d6931b094f925e50f018
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Thu May 12 01:07:06 2022 +0300
+
+    feat: add approve function for admin
+
+commit 98434ba112b1f83969da013e6584914b0a773a37
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Thu May 12 00:54:19 2022 +0300
+
+    feat: add not approved message after log in system
+
+commit 53a232c15fdcd05507debc676ab149fc52841505
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Wed May 11 17:01:38 2022 +0300
+
+    docs: update readme
+
+commit 4cb4f6841ad243726065da2a89c37ed7d1768ca9
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Wed May 11 17:00:45 2022 +0300
+
+    feat: add .gitignore
+
+commit d2790728d3a7bd8a716eb372210d4b04679a184e
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Wed May 11 09:38:23 2022 +0300
+
+    feat: add .gitignore
+
+commit 681fac2f97ad42e2c1e39580126edc60bc596033
+Merge: 85b387e 323aca7
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Wed May 11 00:20:17 2022 +0300
+
+    Merge branch 'coursework-sdt' of https://github.com/asitnikoff/university-work into coursework-sdt
+
+commit 85b387e09013227b608617de7fb0c71966a4fbcf
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Wed May 11 00:17:05 2022 +0300
+
+    refactor: add files of coursework i did before
+
+commit 323aca74bb91f542ab89c7f8e30b12120fa0076d
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Wed May 11 00:17:05 2022 +0300
+
+    add files of coursework i did before
+
+commit 80b8099bbd240eda60e7e031be2db291f292b97c
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 10 23:34:53 2022 +0300
+
+    init: start coursework-sdt
+
+commit bc16f27f3af7b227d582daa00b331939372c82fb
+Author: Aleksey Sitnikov <alexsitnikov2003@gmail.com>
+Date:   Tue May 10 23:33:18 2022 +0300
+
+    init: start university-work

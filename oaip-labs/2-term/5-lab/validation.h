@@ -5,7 +5,7 @@
 template <typename Type>
 Type read();
 template <typename Type>
-Type read(Type, Type);
+Type read(int);
 void clearInputBuffer();
 
 

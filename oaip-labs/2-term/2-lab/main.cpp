@@ -1,23 +1,25 @@
 #include <iostream>
 
 #include "stack.h"
-#include "validation.h"
 
 
-#define INCORRECT_NUMBER_OF_ELEMENTS_IN_STACK "Неверное количество элементов в стеке."
-
-
+template <typename Type>
+Type read();
+template <typename Type>
+Type read(Type, Type);
 void addElementsInStack(StackProperties*&);
 void doTask(StackProperties*&);
 void clearInputBuffer();
+int getRandomNumber();
 
 
 int main() {
+    srand(time(0));
+    std::cout << "Чтобы упростить вам работу, стек автоматически создан и он пуст." << std::endl;
     StackProperties *stack = nullptr;
-    bool isCreated = false;
 
     while (true) {
-        std::cout << "1 - Создать стек.\n";
+        std::cout << "1 - Создать новый стек (старый очиститься).\n";
         std::cout << "2 - Добавить элементы в стек.\n";
         std::cout << "3 - Вывести элементы стека.\n";
         std::cout << "4 - Очистить стек.\n";
@@ -32,32 +34,26 @@ int main() {
         std::cin >> choice;
         clearInputBuffer();
 
-        if (!isCreated && (choice >= 2) && (choice <= 6)) {
-            std::cout << "Сначала необходимо создать стек, чтобы с ним работать." << std::endl;
-            std::cout << "Для этого в главном меню необходимо выбрать опцию \"1\"." << std::endl;
-            continue;
-        }
-
         switch (choice) {
             case 1:
-                if (!isEmptyStack(stack)) {
-                    std::cout << "Стек не пуст. Хотите очистить его сейчас?\n";
-                    std::cout << "1 - да.\n";
-                    std::cout << "Иначе - нет.\n";
-                    fflush(stdout);
+//                if (!isEmptyStack(stack)) {
+//                    std::cout << "Стек не пуст. Хотите очистить его сейчас?\n";
+//                    std::cout << "1 - да.\n";
+//                    std::cout << "Иначе - нет.\n";
+//                    fflush(stdout);
+//
+//                    std::cin >> choice;
+//                    clearInputBuffer();
+//
+//                    if (choice == 1) {
+//                        clearStack(stack);
+//                    } else {
+//                        std::cout << "Перед созданием нового стека вам необходимо очистить старый." << std::endl;
+//                        break;
+//                    }
+//                }
 
-                    std::cin >> choice;
-                    clearInputBuffer();
-
-                    if (choice == 1) {
-                        clearStack(stack);
-                    } else {
-                        std::cout << "Перед созданием нового стека вам необходимо очистить старый." << std::endl;
-                        break;
-                    }
-                }
-
-                isCreated = true;
+                clearStack(stack);
                 std::cout << "Стек создан!" << std::endl;
                 break;
             case 2:
@@ -83,37 +79,75 @@ int main() {
 }
 
 
-void addElementsInStack(StackProperties*& stack) {
-    int n;
-    do {
-        std::cout << "Введите количество элементов N (1 <= N <= 10000): ";
-        fflush(stdout);
-
-        n = readInt(1, 10000);
-
-        if (n == 0) {
-            std::cout << INCORRECT_NUMBER_OF_ELEMENTS_IN_STACK << std::endl;
-            if (!isTryAgain()) {
-                return;
-            }
-        }
-    } while (n == 0);
-
-    std::cout << "Введите элементы стека: ";
-    fflush(stdout);
-    for (int i = 0; i < n; ++i) {
-        int x;
+template <typename Type>
+Type read() {
+    Type x;
+    while (true) {
         std::cin >> x;
-        pushStack(stack, x);
+        if (std::cin.get() != '\n') {
+            clearInputBuffer();
+            std::cout << "Неверный ввод. Попробуйте снова." << std::endl;
+        }
+        else {
+            break;
+        }
     }
-    clearInputBuffer();
+    return x;
+}
 
-    std::cout << "Элементы добавлены в стек" << std::endl;
+
+template <typename Type>
+Type read(Type left, Type right) {
+    Type x;
+    while (true) {
+        std::cin >> x;
+        if (std::cin.get() != '\n') {
+            clearInputBuffer();
+            std::cout << "Неверный ввод. Попробуйте снова." << std::endl;
+        }
+        else if (!((x >= left) && (x <= right))) {
+            std::cout << "Число не удовлетворяет отрезку. Попробуйте снова." << std::endl;
+        } else {
+            break;
+        }
+    }
+    return x;
+}
+
+
+void addElementsInStack(StackProperties*& stack) {
+    std::cout << "Введите количество элементов N (1 <= N <= 10000): ";
+    fflush(stdout);
+    int n = read<int>(1, 10000);
+
+    std::cout << "Какие элементы добавить?" << std::endl;
+    std::cout << "1 - случайно сгенерированные" << std::endl;
+    std::cout << "2 - введенные с клавиатуры" << std::endl;
+
+    int choice = read<int>(1, 2);
+
+    if (choice == 1) {
+        std::cout << "Введите элементы стека: ";
+        fflush(stdout);
+        while (n > 0) {
+            int x = read<int>();
+            pushStack(stack, x);
+            --n;
+        }
+    } else {
+        while (n > 0) {
+            int x = getRandomNumber();
+            pushStack(stack, x);
+            --n;
+        }
+    }
+
+    std::cout << "Элементы добавлены в стек." << std::endl;
 }
 
 
 void doTask(StackProperties*& stack) {
-    if (isEmptyStack(stack) || (stack->next == nullptr)) {
+    if ((stack == nullptr) || (stack->next == nullptr)) {
         std::cout << "Для выполнения задания стек должен состоять минимум из 2 элементов." << std::endl;
         return;
     }
@@ -121,7 +155,7 @@ void doTask(StackProperties*& stack) {
     StackProperties *stack_first_element = getMinElementStack(stack);
     StackProperties *stack_second_element = getMaxElementStack(stack);
 
-    if (isEarlyStack(stack_second_element, stack_first_element, stack)) {
+    if (isEarlyStack(stack_second_element, stack_first_element)) {
         swapElementsStack(stack_first_element, stack_second_element);
     }
 
@@ -132,16 +166,27 @@ void doTask(StackProperties*& stack) {
 
     StackProperties* tmp = stack_first_element->next;
     stack_first_element->next = stack_second_element;
-    while (tmp != stack_second_element) {
-        StackProperties* new_tmp = tmp;
-        tmp = tmp->next;
-        new_tmp->next = nullptr;
-        delete new_tmp;
+
+    std::cout << "Элементы, которые были удалены:";
+
+    stack_first_element = tmp;
+    while (stack_first_element != stack_second_element) {
+        tmp = stack_first_element;
+        stack_first_element = stack_first_element->next;
+        tmp->next = nullptr;
+        std::cout << " [" << tmp->info << "]";
+        delete tmp;
     }
+    std::cout << std::endl;
 }
 
 
 void clearInputBuffer() {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+
+int getRandomNumber() {
+    return rand();
 }

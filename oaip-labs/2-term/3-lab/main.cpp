@@ -8,21 +8,23 @@
 
 
 void addElementsInList(DoubleLinkedListProperties*&, DoubleLinkedListProperties*&);
-void clearInputBuffer();
 void doTask(DoubleLinkedListProperties*);
+int getRandomNumber();
 
 
 int main() {
+    srand(time(0));
+
+    std::cout << "Чтобы упростить вам работу, список автоматически создан и он пуст." << std::endl;
+
     DoubleLinkedListProperties *list_begin = nullptr, *list_end = nullptr;
-    bool isCreated = false;
 
     while (true) {
-        std::cout << "1 - Создать список.\n";
+        std::cout << "1 - Создать список (старый очистится).\n";
         std::cout << "2 - Добавить элементы в список.\n";
         std::cout << "3 - Вывести элементы списка.\n";
         std::cout << "4 - Очистить список.\n";
-        std::cout << "5 - Отсортировать список.\n";
-        std::cout << "6 - Удалить элементы между минимальным и максимальным элементами.\n";
+        std::cout << "5 - Удалить элементы между минимальным и максимальным элементами.\n";
         std::cout << "Иначе - Выйти.\n";
 
         std::cout << "Введите опцию: ";
@@ -32,47 +34,21 @@ int main() {
         std::cin >> choice;
         clearInputBuffer();
 
-        if (!isCreated && (choice >= 2) && (choice <= 6)) {
-            std::cout << "Сначала необходимо создать список, чтобы с ним работать." << std::endl;
-            std::cout << "Для этого в главном меню необходимо выбрать опцию \"1\"." << std::endl;
-            continue;
-        }
-
         switch (choice) {
             case 1:
-                if (!isEmptyList(list_begin)) {
-                    std::cout << "Список не пуст. Хотите очистить его сейчас?\n";
-                    std::cout << "1 - да.\n";
-                    std::cout << "Иначе - нет.\n";
-                    fflush(stdout);
-
-                    std::cin >> choice;
-                    clearInputBuffer();
-
-                    if (choice == 1) {
-                        clearList(list_begin, list_end);
-                    } else {
-                        std::cout << "Перед созданием нового списка вам необходимо очистить старый." << std::endl;
-                        break;
-                    }
-                }
-
-                isCreated = true;
+                clearList(list_begin, list_end);
                 std::cout << "Список создан!" << std::endl;
                 break;
             case 2:
                 addElementsInList(list_begin, list_end);
                 break;
             case 3:
-                showList(list_begin, list_end);
+                showList(list_begin);
                 break;
             case 4:
                 clearList(list_begin, list_end);
                 break;
             case 5:
-//                sortList(list);
-                break;
-            case 6:
                 doTask(list_begin);
                 break;
             default:
@@ -84,64 +60,66 @@ int main() {
 
 
 void addElementsInList(DoubleLinkedListProperties*& list_begin, DoubleLinkedListProperties*& list_end) {
-    int n;
-    do {
-        std::cout << "Введите количество элементов N (1 <= N <= 10000): ";
-        fflush(stdout);
-
-        n = readInt(1, 10000);
-
-        if (n == 0) {
-            std::cout << INCORRECT_NUMBER_OF_ELEMENTS_IN_LIST << std::endl;
-            if (!isTryAgain()) {
-                return;
-            }
-        }
-    } while (n == 0);
-
-    int choice_where;
-    do {
-        std::cout << "Добавлять элементы в начало (1) или в конец (2)?" << std::endl;
-        choice_where = readInt(1, 2);
-        if (choice_where == 0) {
-            std::cout << "Неверный ввод." << std::endl;
-            if (!isTryAgain()) {
-                return;
-            }
-        }
-    } while (choice_where == 0);
-
-    std::cout << "Введите элементы стека: ";
+    std::cout << "Введите количество элементов N (1 <= N <= 10000): ";
     fflush(stdout);
-    if (choice_where == 1) {
-        for (int i = 0; i < n; ++i) {
-            int x;
-            std::cin >> x;
-            pushBeginList(list_begin, list_end, x);
+    int n = read<int>(1, 10000);
+
+    std::cout << "Добавлять элементы в начало (1) или в конец (2)?" << std::endl;
+    int choice_where = read<int>(1, 2);
+
+    std::cout << "Какие элементы добавлять?" << std::endl;
+    std::cout << "1 - случайно сгенерированные" << std::endl;
+    std::cout << "2 - введенные с клавиатуры" << std::endl;
+
+    int choice = read<int>(1, 2);
+
+    if (choice == 1) {
+        std::cout << "Введите элементы списка: ";
+        fflush(stdout);
+        if (choice_where == 1) {
+            while (n > 0) {
+                int x = read<int>();
+                pushBeginList(list_begin, list_end, x);
+                --n;
+            }
+        } else {
+            while (n > 0) {
+                int x = read<int>();
+                pushEndList(list_begin, list_end, x);
+                --n;
+            }
         }
     } else {
-        for (int i = 0; i < n; ++i) {
-            int x;
-            std::cin >> x;
-            pushEndList(list_begin, list_end, x);
+        if (choice_where == 1) {
+            while (n > 0) {
+                int x = getRandomNumber();
+                pushBeginList(list_begin, list_end, x);
+                --n;
+            }
+        } else {
+            while (n > 0) {
+                int x = getRandomNumber();
+                pushEndList(list_begin, list_end, x);
+                --n;
+            }
         }
     }
     clearInputBuffer();
 
-    std::cout << "Элементы добавлены в список" << std::endl;
+    std::cout << "Элементы добавлены в список." << std::endl;
 }
 
 
 void doTask(DoubleLinkedListProperties* list_begin) {
     if (isEmptyList(list_begin) || (list_begin->next == nullptr)) {
-        std::cout << "Для выполнения задания стек должен состоять минимум из 2 элементов." << std::endl;
+        std::cout << "Для выполнения задания список должен состоять минимум из 2 элементов." << std::endl;
         return;
     }
 
     DoubleLinkedListProperties *list_first_element = getMinElementList(list_begin);
     DoubleLinkedListProperties *list_second_element = getMaxElementList(list_begin);
 
-    if (isEarlyList(list_second_element, list_first_element, list_begin)) {
+    if (isEarlyList(list_second_element, list_first_element)) {
         swapElementsList(list_first_element, list_second_element);
     }
 
@@ -156,11 +134,21 @@ void doTask(DoubleLinkedListProperties* list_begin) {
     list_first_element->next->prev = nullptr;
     list_first_element->next = list_second_element;
 
-    clearList(tmp, tmp); // костыль, но лень писать отдельную реализацию удаления
+
+    std::cout << "Элементы, которые были удалены:";
+
+    list_first_element = tmp;
+    while (list_first_element != list_second_element) {
+        tmp = list_first_element;
+        list_first_element = list_first_element->next;
+        tmp->prev = tmp->next = nullptr;
+        std::cout << " [" << tmp->info << "]";
+        delete tmp;
+    }
+    std::cout << std::endl;
 }
 
 
-void clearInputBuffer() {
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+int getRandomNumber() {
+    return rand();
 }

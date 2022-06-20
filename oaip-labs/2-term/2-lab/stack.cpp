@@ -17,6 +17,13 @@ void popStack(StackProperties*& stack) {
     delete tmp;
 }
 
+void clearStack(StackProperties*& stack) {
+    while (stack != nullptr) {
+        popStack(stack);
+    }
+    std::cout << "Стек очищен!" << std::endl;
+}
+
 int topStack(const StackProperties*& stack) {
     return stack->info;
 }
@@ -25,21 +32,13 @@ bool isEmptyStack(StackProperties*& stack) {
     return (stack == nullptr);
 }
 
-void clearStack(StackProperties*& stack) {
-    while (stack != nullptr) {
-        popStack(stack);
-    }
-    std::cout << "Стек очищен!" << std::endl;
-}
-
-void showStack(StackProperties*& stack) {
-    std::cout << "Stack elements:";
+void showStack(StackProperties* stack) {
+    std::cout << "Элементы стека:";
     fflush(stdout);
 
-    StackProperties *tmp = stack;
-    while (tmp != nullptr) {
-        std::cout << " [" << tmp->info << "]";
-        tmp = tmp->next;
+    while (stack != nullptr) {
+        std::cout << " [" << stack->info << "]";
+        stack = stack->next;
     }
     std::cout << std::endl;
 }
@@ -75,13 +74,13 @@ StackProperties* getMaxElementStack(StackProperties* stack) {
 }
 
 
-bool isEarlyStack(StackProperties* first_element, StackProperties* second_element, StackProperties* stack) {
-    while (stack != second_element) {
-        if (stack == first_element) {
+bool isEarlyStack(StackProperties* first_element, StackProperties* second_element) {
+    while (first_element != nullptr) {
+        if (first_element == second_element) {
             return true;
         }
 
-        stack = stack->next;
+        first_element = first_element->next;
     }
     return false;
 }

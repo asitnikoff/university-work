@@ -1,5 +1,4 @@
 #include <iostream>
-#include <limits>
 
 #include "validation.h"
 
@@ -11,7 +10,7 @@ Type read() {
         std::cin >> x;
         if (std::cin.get() != '\n') {
             clearInputBuffer();
-            std::cout << "Неверный ввод. Попробуйте снова." << std::endl;
+            std::cout << "Invalid input. Please, try again." << std::endl;
         }
         else {
             break;
@@ -23,23 +22,23 @@ template int read<int>();
 
 
 template <typename Type>
-Type read(Type left, Type right) {
+Type read(int left) {
     Type x;
     while (true) {
         std::cin >> x;
         if (std::cin.get() != '\n') {
             clearInputBuffer();
-            std::cout << "Неверный ввод. Попробуйте снова." << std::endl;
+            std::cout << "Invalid input. Please, try again." << std::endl;
         }
-        else if (!((x >= left) && (x <= right))) {
-            std::cout << "Число не удовлетворяет отрезку. Попробуйте снова." << std::endl;
+        else if (x <= left) {
+            std::cout << "Parameter must be a positive integer. Please, try again." << std::endl;
         } else {
             break;
         }
     }
     return x;
 }
-template int read<int>(int left, int right);
+template int read<int>(int left);
 
 
 void clearInputBuffer() {

@@ -89,6 +89,7 @@ void clearList(DoubleLinkedListProperties *&list_begin, DoubleLinkedListProperti
     while (list_begin != nullptr) {
         popBeginList(list_begin, list_end);
     }
+    list_end = nullptr;
 }
 
 
@@ -99,19 +100,19 @@ void swapElementsList(DoubleLinkedListProperties *&first_element, DoubleLinkedLi
 }
 
 
-bool isEarlyList(DoubleLinkedListProperties *first_element, DoubleLinkedListProperties *second_element, DoubleLinkedListProperties *list) {
-    while (list != second_element) {
-        if (list == first_element) {
+bool isEarlyList(DoubleLinkedListProperties *first_element, DoubleLinkedListProperties *second_element) {
+    while (first_element != nullptr) {
+        if (first_element == second_element) {
             return true;
         }
 
-        list = list->next;
+        first_element = first_element->next;
     }
     return false;
 }
 
 
-void showListFromBegin(DoubleLinkedListProperties *list_begin) {
+/*void showListFromBegin(DoubleLinkedListProperties *list_begin) {
     std::cout << "Список элементов с начала:";
     fflush(stdout);
 
@@ -133,26 +134,25 @@ void showListFromEnd(DoubleLinkedListProperties *list_end) {
     }
     std::cout << std::endl;
 }
+*/
 
+void showList(DoubleLinkedListProperties *list_begin) {
+//    std::cout << "Вывести список с начала (1) или с конца (2)?" << std::endl;
+//    std::cout << "Введите то, что выбрали: ";
+//    fflush(stdout);
 
-void showList(DoubleLinkedListProperties *&list_begin, DoubleLinkedListProperties *&list_end) {
-    std::cout << "Вывести список с начала (1) или с конца (2)?" << std::endl;
-    std::cout << "Введите то, что выбрали: ";
-    fflush(stdout);
+    while (list_begin->next != nullptr) {
+        std::cout << " [" << list_begin->info << "]";
+        list_begin = list_begin->next;
+    }
+    std::cout << " [" << list_begin->info << "]";
+    std::cout << std::endl;
 
-    int choice;
-    do {
-        choice = readInt(1, 2);
-
-        if (choice == 0) {
-            std::cout << "Неверный ввод." << std::endl;
-            if (!isTryAgain()) {
-                return;
-            }
-        }
-    } while (choice == 0);
-
-    (choice == 1) ? showListFromBegin(list_begin) : showListFromEnd(list_end);
+    while (list_begin != nullptr) {
+        std::cout << " [" << list_begin->info << "]";
+        list_begin = list_begin->prev;
+    }
+    std::cout << std::endl;
 }
 
 

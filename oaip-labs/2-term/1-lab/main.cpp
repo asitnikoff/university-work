@@ -7,15 +7,16 @@
 template <typename Type>
 Type read();
 void clearInputBuffer();
-void inputParameters(double&, int&, bool&);
+void inputParameters(double&, int&);
 
 
 int main() {
-    bool is_parameters_entered = false;
     double x;
     int n;
 
     std::cout << "This program calculates x^n." << std::endl;
+    std::cout << "Before using programs you need to input parameters." << std::endl;
+    inputParameters(x, n);
 
     while (true) {
         std::cout << "Input paramaters - 0" << std::endl;
@@ -29,17 +30,12 @@ int main() {
         int choice;
         std::cin >> choice;
 
-        if (!is_parameters_entered && (choice >= 1) && (choice <= 4)) {
-            std::cout << "You must input parameters first!";
-            inputParameters(x, n, is_parameters_entered);
-        }
-
         switch (choice) {
             default:
                 std::cout << "Bye!\n";
                 return 0;
             case 0:
-                inputParameters(x, n, is_parameters_entered);
+                inputParameters(x, n);
                 break;
             case 1:
                 std::cout << "Recursion result = " << calcRecursionBinPow(x, n) << "\n";
@@ -84,12 +80,10 @@ void clearInputBuffer() {
 }
 
 
-void inputParameters(double& x, int& n, bool& is_parameters_entered) {
+void inputParameters(double& x, int& n) {
     std::cout << "Input x: ";
     x = read<double>();
 
     std::cout << "Input n: ";
     n = read<int>();
-
-    is_parameters_entered = true;
 }

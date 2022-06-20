@@ -16,12 +16,12 @@ int getBeginList(const DoubleLinkedListProperties*&);
 int getEndList(const DoubleLinkedListProperties*&);
 bool isEmptyList(DoubleLinkedListProperties*&);
 void clearList(DoubleLinkedListProperties*&, DoubleLinkedListProperties*&);
-void showList(DoubleLinkedListProperties*&, DoubleLinkedListProperties*&);
+void showList(DoubleLinkedListProperties*);
 void showListFromBegin(DoubleLinkedListProperties*);
 void showListFromEnd(DoubleLinkedListProperties*);
 DoubleLinkedListProperties* getMinElementList(DoubleLinkedListProperties*);
 DoubleLinkedListProperties* getMaxElementList(DoubleLinkedListProperties*);
-bool isEarlyList(DoubleLinkedListProperties*, DoubleLinkedListProperties*, DoubleLinkedListProperties*);
+bool isEarlyList(DoubleLinkedListProperties*, DoubleLinkedListProperties*);
 void swapElementsList(DoubleLinkedListProperties*&, DoubleLinkedListProperties*&);
 //void sortList(DoubleLinkedListProperties*&);
 

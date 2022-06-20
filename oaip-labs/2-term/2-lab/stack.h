@@ -13,10 +13,10 @@ void popStack(StackProperties*&);
 int topStack(const StackProperties*&);
 bool isEmptyStack(StackProperties*&);
 void clearStack(StackProperties*&);
-void showStack(StackProperties*&);
+void showStack(StackProperties*);
 StackProperties* getMinElementStack(StackProperties*);
 StackProperties* getMaxElementStack(StackProperties*);
-bool isEarlyStack(StackProperties*, StackProperties*, StackProperties*);
+bool isEarlyStack(StackProperties*, StackProperties*);
 void swapElementsStack(StackProperties*&, StackProperties*&);
 void sortStack(StackProperties*&);
 

@@ -2,8 +2,11 @@
 #define VALIDATION_H
 
 
-int readInt(int, int);
-bool isTryAgain();
+template <typename Type>
+Type read();
+void clearInputBuffer();
+bool isValidExpressionBraces(std::string);
+bool isValidExpressionOperators(std::string);
 
 
 #endif
